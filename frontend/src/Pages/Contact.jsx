@@ -59,7 +59,7 @@ function Contact() {
 
   return (
     <>
-      <Box w="110%">
+      <Box w="100%">
         <Box
           bgImage="url('https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0JTIwYW5kJTIwZG9nfGVufDB8fDB8fHww')"
           bgSize="cover"
@@ -235,7 +235,7 @@ function Contact() {
                   <Image src="https://www.petpals.com/wp-content/themes/petpals/img/pif-footer.png" />
                 </Flex>
               </Box>
-              <Box fontSize="16px" marginLeft="12%" w="320%">
+              <Box fontSize="16px" marginLeft="10%" w="220%">
                 <Text textAlign={{ base: "center", sm: "center" }} mb={4}>
                   Petpals (UK) Limited | Basepoint | Caxton Close | East Portway
                   | Andover | Hampshire | SP10 3FG | Tel: 01264 326362
