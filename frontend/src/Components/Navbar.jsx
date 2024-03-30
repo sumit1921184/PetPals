@@ -35,7 +35,7 @@ export const Navbar = () => {
 
         <div className="mobile-menu-icon" onClick={handleToggleMenu}>
           <FaBars />
-        </div>
+        
 
         <div className={`menu-drawer ${isMenuOpen ? 'open' : ''}`}>
           <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
@@ -45,6 +45,7 @@ export const Navbar = () => {
             </Link>
           <Link to="/signup" onClick={() => setIsMenuOpen(false)}>Signup</Link>
           
+        </div>
         </div>
       </div>
     </div>

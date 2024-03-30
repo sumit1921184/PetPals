@@ -6,6 +6,7 @@ import { Navbar } from './Components/Navbar';
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import "./App.css";
+
 import Allroutes from './Routing/AllRoutes';
 
 function App() {
@@ -13,11 +14,20 @@ function App() {
     <Provider store={store}> 
       <Router>
         <Navbar/>
+
           <Allroutes/>
-    <Contact />
-      <About />
+
+         
       </Router>
     </Provider>
+
+
+    
+
+
+      </Router>
+    </Provider>
+
 
   );
 }
