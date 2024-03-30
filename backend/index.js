@@ -13,7 +13,7 @@ app.use("/users", userRouter)
 app.use("/pet",petRouter)
 app.use("/application",applicationRouter)
 
-//Use auth middleware for restricted routes
+//Used auth middleware for restricted routes
 
 app.listen(process.env.port, async() => {
 	try {
