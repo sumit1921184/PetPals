@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { UserModel } = require("../model/user.model")
 const {BlackListModel} = require("../model/blacklist.model")
+const { auth } = require("../middlewares/auth.middleware")
 
 const userRouter = express.Router()
 
@@ -38,7 +39,7 @@ userRouter.post("/login", async(req,res) => {
 			bcrypt.compare(pass, user.pass, (err, result) => {
 				if (result) {
 					// const token = jwt.sign({course:'nem104'},'masai');
-					res.status(200).json({msg:"Login Successful!",token:jwt.sign({course:'nem104'},process.env.Key)})
+					res.status(200).json({msg:"Login Successful!",token:jwt.sign({userId:user._id,name:user.name},process.env.Key)})
 				} else {
 					res.status(200).json({msg: "Password does not match"})
 				}
@@ -72,6 +73,28 @@ userRouter.get("/",async(req,res)=>{
 	}
 	catch(e){
 		res.status(400).json({err})
+	}
+})
+
+userRouter.get("/:id",async(req,res)=>{
+	const { id } = req.params
+	try{
+		const user = await UserModel.find({_id:id});
+		res.status(200).json({user});
+	}
+	catch(e){
+		res.status(400).json({e})
+	}
+})
+
+userRouter.delete("/:id",async(req,res)=>{
+	const { id } = req.params
+	try{
+		const user = await UserModel.findByIdAndDelete({_id:id});
+		res.status(200).json({msg:"User Deleted"});
+	}
+	catch(e){
+		res.status(400).json({e})
 	}
 })
 
