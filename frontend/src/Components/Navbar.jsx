@@ -21,11 +21,12 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar-container">
-        <div className="navbar-logo">
+        
+<Link to = "/"> <div className="navbar-logo">
           <img src={BONVOYAGELOGO} alt="" />
-        </div>
-
+        </div></Link>
         <div className="navbar-links">
+          
           <Link to="/" className={`nav-link ${activeSection === '/' ? 'active' : ''}`}>Home</Link>
           <Link to="/adopt" className={`nav-link ${activeSection === '/adopt' ? 'active' : ''}`}>Adopt</Link>
           <Link to="/login" className="nav-link" onClick={handleLogout}>Login</Link>
