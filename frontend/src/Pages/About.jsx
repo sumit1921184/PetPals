@@ -49,7 +49,7 @@ const About = () => {
           >
             Implement a thorough review process for adoption applications to
             ensure that dogs are placed in suitable homes. This may involve
-            assessing factors such as the adopter's living situation, and their
+            assessing factors such as the adopters living situation, and their
             ability to provide proper care and attention to a dog. A
             comprehensive review process helps ensure the well-being and safety
             of the animals.
@@ -69,7 +69,7 @@ const About = () => {
             textAlign="justify"
           >
             Focus on personalized matching between dogs and potential adopters.
-            Take into account factors such as the adopter's and the dog's
+            Take into account factors such as the adopters and the dogs
             temperament and needs. By matching dogs with compatible adopters,
             you increase the likelihood of successful adoptions and reduce the
             risk of dogs being returned to the shelter or rescue organization.
@@ -91,7 +91,7 @@ const About = () => {
             behavior training, and access to veterinary services. Regular
             follow-up communication helps address any concerns or challenges
             that may arise and reinforces the bond between adopters and their
-            new pets.{" "}
+            new pets.
           </Text>
         </GridItem>
       </Grid>
@@ -149,7 +149,7 @@ const About = () => {
         </Text>
         <br />
         <Text>
-          We're so happy to have found Petpals Bracknell as they look after our
+          We are so happy to have found Petpals Bracknell as they look after our
           cat (who needs daily medication) and our chickens!
         </Text>
         <br />
@@ -189,14 +189,14 @@ const About = () => {
         <Text>
           The Basingstoke Petpals team of Alex and Phil have been walking and
           helping with our dog Dusty for a couple of years now and I genuinely
-          couldn't be happier with them. They take absolute pride in providing
+          could not be happier with them. They take absolute pride in providing
           an exceptional service, always flexible where needed and responsive if
           we need to discuss any changes with them; even at the last
           minute.Ensuring our dog is taken care of and provided with a
           professional - but fun and love filled - dog walk, particular to keep
           her socialising regularly in the right mix of other dogs means a lot
-          to us and we really couldn't be happier with the awesome job they do.
-          And we're sure that Dusty our cockapoo would agree with every word
+          to us and we really could not be happier with the awesome job they do.
+          And we are sure that Dusty our cockapoo would agree with every word
           too!
         </Text>
         <br />
@@ -210,7 +210,7 @@ const About = () => {
           James has been taking care of my cat on several occasions since last
           October and I am so pleased I have found him. James is very
           professional and he cares a lot about giving good care. The reports he
-          provides are very well detailed and it's very reassuring read them
+          provides are very well detailed and it is very reassuring read them
           when I am away (love the photos!). He is also very patient and
           respectful, as always encourages Eowyn to play but never forces her
           when is lazy. His service is fantastic and I would recommend him 100%.
