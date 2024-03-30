@@ -65,6 +65,16 @@ userRouter.post("/logout",async(req,res)=>{
 	}
 })
 
+userRouter.get("/",async(req,res)=>{
+	try{
+		const user = await UserModel.find();
+		res.status(200).json({user});
+	}
+	catch(e){
+		res.status(400).json({err})
+	}
+})
+
 module.exports = {
 	userRouter  
 }
