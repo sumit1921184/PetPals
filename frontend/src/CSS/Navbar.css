@@ -2,6 +2,7 @@
     background: linear-gradient(135deg, #FFA500, #FFFF00);
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
   }
   
   .navbar-container {
@@ -77,6 +78,7 @@
       top: 0;
       left: 0;
       justify-content: flex-start;
+      z-index: 1000;
       align-items: flex-start;
       padding: 50px 20px;
       background: linear-gradient(135deg, #FFA500, #FFFF00);
