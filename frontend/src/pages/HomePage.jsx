@@ -1,11 +1,15 @@
 // HomePage.jsx
 
-import { Carousel } from "react-responsive-carousel";
+import Carousel from "../Components/Carosuel";
+
+
 
 const HomePage = () => {
   return (
     <div>
+      
       <Carousel/>
+      
     </div>
   );
 };
