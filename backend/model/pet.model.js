@@ -7,6 +7,7 @@ const petSchema = mongoose.Schema({
     age:{type:String,required:true},
     url:{type:String,required:true},
     gender:{type:String,require:true},
+    description:{type:String},
     isAdopted:{type:Boolean,default:false}
     
 },{

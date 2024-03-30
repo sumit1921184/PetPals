@@ -1,6 +1,6 @@
 // HomePage.jsx
 
-import Carousel from "../Components/Carosuel";
+import Carousel from "../components/Carosuel";
 
 
 
