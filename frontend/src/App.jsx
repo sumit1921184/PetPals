@@ -1,4 +1,3 @@
-// App.jsx
 
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux'; // Import Provider from react-redux
@@ -12,7 +11,7 @@ import Footer from './Components/footer';
 
 function App() {
   return (
-    <Provider store={store}> {/* Wrap the entire application with Provider */}
+    <Provider store={store}> 
       <Router>
         <Navbar/>
 
@@ -21,10 +20,13 @@ function App() {
       </Router>
     </Provider>
 
-
+)
     
 
-  );
+
+  
+
+
 }
 
 export default App;
