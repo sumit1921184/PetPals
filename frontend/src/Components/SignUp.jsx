@@ -48,7 +48,7 @@ export default function Register() {
             });
             setTimeout(() => {
                 navigate('/');
-            }, 2000);
+            }, 1000);
         } catch (err) {
             if (err.response && err.response.data) {
                 toast({
