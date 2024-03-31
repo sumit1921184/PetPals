@@ -79,6 +79,7 @@ userRouter.get("/",async(req,res)=>{
 userRouter.get("/:id",async(req,res)=>{
 	const { id } = req.params
 	try{
+		console.log(id);
 		const user = await UserModel.find({_id:id});
 		res.status(200).json({user});
 	}
@@ -92,6 +93,18 @@ userRouter.delete("/:id",async(req,res)=>{
 	try{
 		const user = await UserModel.findByIdAndDelete({_id:id});
 		res.status(200).json({msg:"User Deleted"});
+	}
+	catch(e){
+		res.status(400).json({e})
+	}
+})
+
+userRouter.patch("/:id",async(req,res)=>{
+	const { id } = req.params
+	const payload = req.body
+	try{
+		const user = await UserModel.findByIdAndUpdate(id, payload, { new: true });
+		res.status(200).json({msg:"User updaated"});
 	}
 	catch(e){
 		res.status(400).json({e})
