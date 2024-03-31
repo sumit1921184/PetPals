@@ -3,15 +3,13 @@
 
 import { Route, Routes } from 'react-router-dom';
 
-<<<<<<< HEAD
+
 import Homepage from '../pages/HomePage';
 import Contact from '../pages/Contact';
-//  import Login from '../pages/Login';
+ import { LoginForm } from '../pages/Login';
  import About from '../pages/About';
-=======
-import Homepage from '../Pages/HomePage';
-// import Login from '../pages/Login';
->>>>>>> c86e1180ca35c53ed0a94cad1aeb7c1910f03105
+import SignUp from '../Components/SignUp';
+
 
 function Allroutes() {
 
@@ -23,7 +21,9 @@ function Allroutes() {
       <Route path="/" element={<Homepage />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/About" element={<About />} />
-      {/* <Route path="/login" element={<Login />} /> */}
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/SignUp" element={<SignUp />} />
+      
 
 
     </Routes>

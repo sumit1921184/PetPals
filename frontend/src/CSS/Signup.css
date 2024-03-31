@@ -1,0 +1,81 @@
+/* SignUp.css */
+
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/2.jpg');
+    background-size: cover;
+    background-position: center;
+
+  }
+  
+  .form-container {
+    padding: 2rem;
+    background-color: #fff; /* White background */
+    border-radius: 0.5rem;
+  }
+  
+  .formgeral {
+    padding: 1rem;
+  }
+  
+  .text-center {
+    text-align: center; /* Center align text */
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: black;
+    background-image: linear-gradient(to right, orange , yellow);
+    border-color: linear-gradient(to right, orange , yellow);
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: yellowgreen; /* Darker shade of primary color on hover */
+    border-color: orange; /* Darker shade of primary color on hover */
+  }
+  
+  .text-end {
+    text-align: right; /* Right align text */
+  }
+  
+  .text-end a {
+    color: orangered; /* Bootstrap primary color */
+    text-decoration: none;
+  }
+  
+  .text-end a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Adjust margins and paddings as needed */
+  .mb-2 {
+    margin-bottom: 1rem;
+  }
+  

@@ -4,7 +4,9 @@ import { Provider } from 'react-redux'; // Import Provider from react-redux
 import {store} from './Redux/store'; // Assuming you have a Redux store set u
 import { Navbar } from './Components/Navbar';
 
-import "./App.css";
+
+
+
 
 import Allroutes from './Routing/AllRoutes';
 import Footer from './Components/footer';
