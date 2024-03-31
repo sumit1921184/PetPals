@@ -1,8 +1,8 @@
 // HomePage.jsx
 
 
-import Article from "../Components/Article";
-import Carousel from "../Components/Carosuel";
+import Article from "../components/Article";
+import Carousel from "../components/Carosuel";
 
 
 
