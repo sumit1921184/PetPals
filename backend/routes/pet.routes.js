@@ -3,6 +3,25 @@ const { PetModel } = require("../model/pet.model");
 
 const petRouter = express.Router();
 
+
+petRouter.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        console.log("Fetching pet with ID:", id);
+        const pets = await PetModel.find({_id:id});
+        console.log("Found pets:", pets);
+        if (pets.length === 0) {
+            return res.status(404).json({ message: "Pet not found" });
+        }
+        res.status(200).json({ pets });
+    } catch (e) {
+        console.error("Error fetching pet:", e);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+
+
 petRouter.get("/", async (req, res) => {
     try {
         const pets = await PetModel.find();
@@ -12,18 +31,7 @@ petRouter.get("/", async (req, res) => {
     }
 });
 
-petRouter.get("/:id", async (req, res) => {
-    const { id } = req.params;
-    try {
-        const pet = await PetModel.findById({_id:id});
-        if (!pet) {
-            return res.status(404).json({ message: "Pet not found" });
-        }
-        res.status(200).json({ pet });
-    } catch (e) {
-        res.status(400).json({ error: e.message });
-    }
-});
+
 
 petRouter.post("/", async (req, res) => {
     const payload = req.body;
