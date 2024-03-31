@@ -5,6 +5,8 @@ import Carousel from "../Components/Carosuel";
 
 
 
+
+
 const HomePage = () => {
   return (
     <div>
@@ -12,6 +14,7 @@ const HomePage = () => {
       <Carousel/>
       <h2 style={{ textAlign: 'center',fontSize: '50px', margin: '20px 0',fontWeight: 'bold',fontFamily: "sans-serif", color:'yellowgreen'}}>Article</h2>
       <Article/>
+      
     </div>
   );
 };
