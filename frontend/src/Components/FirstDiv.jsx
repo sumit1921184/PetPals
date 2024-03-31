@@ -22,7 +22,7 @@ const FirstDiv = () => {
       
       <Box alignSelf="flex-start" marginLeft="150px" marginTop="400px">
         <Link to="/adopt">
-          <Button background={'orange'} color={'black'}>Get Started</Button>
+          <Button background={'orange'} color={'black'} >Get Started</Button>
         </Link>
         <Icon as={FaArrowRight} ml={2} />
       </Box>
