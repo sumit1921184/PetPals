@@ -15,7 +15,7 @@ petRouter.get("/", async (req, res) => {
 petRouter.get("/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        const pet = await PetModel.findById(id);
+        const pet = await PetModel.findById({_id:id});
         if (!pet) {
             return res.status(404).json({ message: "Pet not found" });
         }
