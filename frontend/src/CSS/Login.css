@@ -1,0 +1,98 @@
+/* Login.css */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/frame-with-dogs-vector-white-background_53876-127700.avif');
+    background-size: cover;
+  }
+  
+  .form-container {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.25rem;
+  }
+  
+  .formgeral {
+    padding: 1rem;
+  }
+  
+  h3.text-center {
+    margin-bottom: 1rem;
+  }
+  
+  .label, .form-control, .custom-input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: orange;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+  
+  .btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  
+  .d-grid {
+    display: grid;
+  }
+  
+  .textSignup {
+    margin-top: 1rem;
+    text-align: right;
+  }
+  
+  .textSignup a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .textSignup a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Adjust the margins as needed */
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .custom-input-label {
+    margin-left: 0.5rem;
+  }
+  
+  .paragfim {
+    margin-top: 1rem;
+  }
+  
