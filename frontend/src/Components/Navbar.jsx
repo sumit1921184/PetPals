@@ -14,9 +14,9 @@ export const Navbar = () => {
   };
 
   // Example of a function to handle logout, adjust as needed
-  const handleLogout = () => {
-    console.log('Logout function called');
-  };
+  // const handleLogout = () => {
+  //   console.log('Logout function called');
+  // };
 
   return (
     <div className="navbar">
@@ -29,7 +29,7 @@ export const Navbar = () => {
           
           <Link to="/" className={`nav-link ${activeSection === '/' ? 'active' : ''}`}>Home</Link>
           <Link to="/adopt" className={`nav-link ${activeSection === '/adopt' ? 'active' : ''}`}>Adopt</Link>
-          <Link to="/login" className="nav-link" onClick={handleLogout}>Login</Link>
+          <Link to="/login" className="nav-link">Login</Link>
           <Link to="/signup" className="nav-link">Signup</Link>
           
         </div>
