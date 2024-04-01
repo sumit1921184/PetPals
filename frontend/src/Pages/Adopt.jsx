@@ -20,16 +20,18 @@ const Adopt = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetchrender();
+    fetchrender(page);
   }, [page]);
 
   const handclick = (val) => {
     setPage(page + val);
   };
 
-  const fetchrender = async () => {
+  const fetchrender = async (page) => {
     try {
-      const res = await fetch(`https://petpals-4.onrender.com/pet/`);
+      const res = await fetch(
+        `https://petpals-4.onrender.com/pet/?page=${page}`
+      );
       const data = await res.json();
       setLoading(false);
       console.log(data.pets);
@@ -66,10 +68,10 @@ const Adopt = () => {
         <Grid
           textAlign={"left"}
           color={"#171616"}
-          border="2px solid red"
+          // border="2px solid red"
           w="90%"
           m="auto"
-          h={{ base: "8950px", md: "4200px", xl: "2200px" }}
+          h={{ base: "4950px", md: "2000px", xl: "1000px" }}
           gap={{ base: "2%", md: "3%", xl: "4%" }}
           //  pt={"100px"}
           justifyContent={"center"}
@@ -85,15 +87,16 @@ const Adopt = () => {
               boxShadow="yellow 0px 8px 24px"
               display={"flex"}
               p={"20px"}
+              pt="0px"
               flexDir={"column"}
               _hover={{
                 transform: "scale(1.02)",
                 transition: "transform 0.4s",
               }}
-              // h={"350px"}
+              //  h={"350px"}
               key={i}
             >
-              <Image src={ele.url} w="200px" h="180px" m={"auto"} />
+              <Image src={ele.url} w="100%" h="180px" m={"auto"} />
               <Flex justifyContent={"space-around"} alignItems={"center"}>
                 <Flex direction="column" gap="2%">
                   <Heading
@@ -120,7 +123,7 @@ const Adopt = () => {
                     {" "}
                     Gender: {ele.gender}
                   </Text>
-                  <Text fontSize={"16px"} color="black">
+                  <Text fontSize={"16px"} color="black" textAlign="justify">
                     {" "}
                     Description: {ele.description}
                   </Text>
@@ -136,14 +139,18 @@ const Adopt = () => {
       <Flex m="auto" width="28%" mb="20px">
         <ButtonGroup variant="outline" spacing="7">
           <Button
-            bgColor="red"
+            bgColor="yellow"
             onClick={() => handclick(-1)}
             isDisabled={page === 1}
           >
             Previous
           </Button>
           <p>{page}</p>
-          <Button bgColor="green" onClick={() => handclick(1)}>
+          <Button
+            bgColor="yellow"
+            onClick={() => handclick(1)}
+            isDisabled={page === 3}
+          >
             Next
           </Button>
         </ButtonGroup>
