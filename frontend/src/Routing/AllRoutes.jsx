@@ -8,7 +8,7 @@ import Homepage from '../Pages/HomePage';
 import Contact from '../Pages/Contact';
  import { LoginForm } from '../Pages/Login';
  import About from '../Pages/About';
-import SignUp from '../Components/SignUp';
+import SignUp from '../components/SignUp';
 
 
 function Allroutes() {
