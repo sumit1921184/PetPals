@@ -29,9 +29,7 @@ const Adopt = () => {
 
   const fetchrender = async () => {
     try {
-      const res = await fetch(
-        `https://excited-cod-beret.cyclic.app/pet?_page=${page}&_limit=10`
-      );
+      const res = await fetch(`https://petpals-4.onrender.com/pet/`);
       const data = await res.json();
       setLoading(false);
       console.log(data.pets);
@@ -135,7 +133,7 @@ const Adopt = () => {
           ))}
         </Grid>
       </div>
-      <Flex m="auto" width="28%">
+      <Flex m="auto" width="28%" mb="20px">
         <ButtonGroup variant="outline" spacing="7">
           <Button
             bgColor="red"
