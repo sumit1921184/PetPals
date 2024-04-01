@@ -20,9 +20,18 @@
   .article-content {
     flex: 1;
   }
+  .article-content h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, orange, yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-weight: bold;
+  }
   
   .article-content p {
-    font-size: 16px;
+    font-size: 20px;
     padding: 10%;
     font-family: cursive;
   }

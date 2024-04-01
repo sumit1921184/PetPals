@@ -1,12 +1,18 @@
-// actionTypes.js
+export const GET_PETS_REQUEST = "GET_PETS_REQUEST";
+export const GET_PETS_SUCCESS = "GET_PETS_SUCCESS";
+export const GET_PETS_FAILURE = "GET_PETS_FAILURE";
 
-// Define action types as constants
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
-export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
 
-// You can define other action types as needed
+export const GET_USER_DATA = "GET_USER_DATA";
+export const get_USER_SUCCESS = "GET_USER_SUCCESS";
+
+export const GET_SINGLE_PET_REQUEST = "GET_SINGLE_PET";
+export const GET_SINGLE_PET_SUCCESS = "GET_SINGLE_PET_SUCCESS";
+export const GET_SINGLE_PET_FAILURE = "GET_SINGLE_PET_FAILURE"

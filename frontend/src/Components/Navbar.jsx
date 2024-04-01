@@ -14,9 +14,9 @@ export const Navbar = () => {
   };
 
   // Example of a function to handle logout, adjust as needed
-  const handleLogout = () => {
-    console.log('Logout function called');
-  };
+  // const handleLogout = () => {
+  //   console.log('Logout function called');
+  // };
 
   return (
     <div className="navbar">
@@ -29,7 +29,9 @@ export const Navbar = () => {
           
           <Link to="/" className={`nav-link ${activeSection === '/' ? 'active' : ''}`}>Home</Link>
           <Link to="/adopt" className={`nav-link ${activeSection === '/adopt' ? 'active' : ''}`}>Adopt</Link>
-          <Link to="/login" className="nav-link" onClick={handleLogout}>Login</Link>
+          <Link to="/About" className={`nav-link ${activeSection === '/About' ? 'active' : ''}`}>About</Link>
+          <Link to="/Contact" className={`nav-link ${activeSection === '/Contact' ? 'active' : ''}`}>Contact</Link>
+          <Link to="/login" className="nav-link">Login</Link>
           <Link to="/signup" className="nav-link">Signup</Link>
           
         </div>
@@ -41,6 +43,9 @@ export const Navbar = () => {
         <div className={`menu-drawer ${isMenuOpen ? 'open' : ''}`}>
           <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link to="/adopt" onClick={() => setIsMenuOpen(false)}>Adopt</Link>
+          <Link to="/About" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link to="/Contact" onClick={() => setIsMenuOpen(false)}>Contact US</Link>
+
           <Link to="/login" onClick={() => setIsMenuOpen(false) }>
               Login
             </Link>

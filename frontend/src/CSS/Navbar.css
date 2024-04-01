@@ -16,18 +16,21 @@
   .navbar-logo img {
     height: 90px;
     width: 80px;
+    
   }
   
   .navbar-links {
     display: flex;
     align-items: center;
+    gap:30px;
 
   }
   
   .nav-link {
     text-decoration: none;
     padding: 10px;
-    color: black;
+    color:grey;
+    gap: 30px;
     font-weight: bold;
     font-size: 20px;
     transition: color 0.3s;

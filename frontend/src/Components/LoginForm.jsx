@@ -1,59 +1,86 @@
+import  { useContext } from 'react'
+// import bgImg from '../assets/img1.jpg'
+import { useForm } from 'react-hook-form';
+import login_picture from "../assets/pet2.jpg"
+import { Link, useNavigate } from 'react-router-dom';
+// import { authContext } from '../context/AuthContext';   
+import '../CSS/Login.css'
+import axios from 'axios';
+import { useToast } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, get_USER_SUCCESS } from '../Redux/actionTypes';
+export default function Login() {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const toast = useToast()
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const state = useSelector(state=>state);
+  const onSubmit = (data) => {
+    dispatch({type:LOGIN_REQUEST});
+    axios.post("https://excited-cod-beret.cyclic.app/users/login", data)
+      .then((res) => {
+        // AuthLoginFunc()
+        console.log(res);
+        dispatch({type:LOGIN_SUCCESS});
+        toast({
+          title: res.data.msg,
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        })
+        dispatch({type:get_USER_SUCCESS,payload:res.data.user});
+        // AuthNameFunc(res.data.userName)
+        console.log(res.data);
+        localStorage.setItem("token", res.data.token)
+        setTimeout(() => {
+          navigate("/")
+        }, 1500);
+      })
+      .catch((err) => {
+        if (err.response.status == 402) {
+          return toast({
+            title: err.response.data.error,
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+          })
+        }
+        dispatch({type:LOGIN_FAILURE})
 
-import { Link } from 'react-router-dom';
-import '../CSS/Login.css';
-function Login () {
+        if (err.response.status == 403) {
+          return toast({
+            title: err.response.data.error,
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+          })
+        }
+
+      })
+  }
   return (
-    <div>
-      {/* A tela vai ser d-flex, 100%, alinhado na vertical e horizontal, cor de fundo primário */}
-      <div className='login d-flex justify-content-center align-items-center 100-w vh-100 bg-primary'>
-        {/*   p-5 é padding tamanho 5 */}
-        <div className='form-container  p-xl-5 p-lg-5 p-md-4 p-sm-3 p-xs-3 rounded bg-white'>
-          <form className='formgeral p-md-4 '>
-            <h3 className='text-center'>Sign In</h3>
-            {/* mb-2 é distância embaixo */}
-            <div className='mb-2 classnameinput'>
-              <label htmlFor='email'>Email</label>
-              <input
-                type='email'
-                placeholder='Enter Email'
-                className='form-control'
-              />
-            </div>
+    <div className='Regis'>
+      <section>
+        <div className="register">
+          <div className="col-1">
+            <h2 className="Sign">Login</h2>
+            <span className="Sign1">login to meet your furry friend</span>
 
-            <div className='mb-2'>
-              <label htmlFor='password'>Password</label>
-              <input
-                type='password'
-                placeholder='Enter Password'
-                className='form-control'
-              />
-            </div>
-            <div className='mb-2 textRememb'>
-              {/* custom-control fornece  um rótulo, um ícone de marcação e um ponto de verificação */}
-              <input
-                type='checkbox'
-                className='custom-control custom-check'
-                id='check'
-              />
-              <label htmlFor='password' className='custom-input-label ms-2'>
-                Remember password
-              </label>
-              <div className='d-grid'>
-                <button className='btn btn-primary'>Sign In</button>
-              </div>
-            </div>
-            <div className="paragfim">
-            <p className='text-end mt-2 textSignup'>
-              Forgot Password?{' '}
-              <Link to='/signup' className='ms-2'>
-                  Sign up?
-              </Link>
-            </p>
-            </div>
-          </form>
+            <form id='form' className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+              <input type="email" {...register("email", { required: true })} placeholder='email' />
+              {errors.email && <span style={{ color: "red" }}>
+                *Email* is mandatory </span>}
+              <input type="password" {...register("password")} placeholder='Password' />
+              <button className='btn'>Log In</button>
+              <Link to="/admin"><h1>Admin ?</h1></Link>
+            </form>
+          </div>
+          <div className="col-2">
+            <img src={login_picture} alt="" />
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
-export default Login
+

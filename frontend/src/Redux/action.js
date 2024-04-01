@@ -1,71 +1,53 @@
-// actions.js
-
 import axios from 'axios';
-import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    LOGOUT_REQUEST,
-    LOGOUT_SUCCESS,
-    LOGOUT_FAILURE,
-  } from './actionTypes';
-  
-  // Action creators
-  export const loginRequest = () => ({
-    type: LOGIN_REQUEST,
-  });
-  
-  export const loginSuccess = (userData) => ({
-    type: LOGIN_SUCCESS,
-    payload: userData, // You can pass additional data with the payload
-  });
-  
-  export const loginFailure = (error) => ({
-    type: LOGIN_FAILURE,
-    payload: error,
-  });
-  
-  export const logoutRequest = () => ({
-    type: LOGOUT_REQUEST,
-  });
-  
-  export const logoutSuccess = () => ({
-    type: LOGOUT_SUCCESS,
-  });
-  
-  export const logoutFailure = (error) => ({
-    type: LOGOUT_FAILURE,
-    payload: error,
-  });
-  export const loginUser = (formData) => (dispatch) => {
-    return new Promise((resolve) => {
-      dispatch({type: LOGIN_REQUEST});
-      axios.get('https://moke-api-server.onrender.com/Users')
-          .then((res) => {
-            console.log(res.data);
-            const allow = res.data.find((el) =>
-              el.email == formData.email && el.password == formData.password,
-            );
-            console.log(allow);
-            const token = Math.random();
-            if (allow) {
-              resolve(true);
-              dispatch({type: LOGIN_SUCCESS, payload: token});
-            } else {
-              alert('Invalid Credentials,Please Check the credentials');
+import { GET_PETS_FAILURE, GET_PETS_REQUEST, GET_PETS_SUCCESS, GET_SINGLE_PET_FAILURE, GET_SINGLE_PET_REQUEST, GET_SINGLE_PET_SUCCESS } from "./action-types";
+
+// import axios from 'axios';
+
+export const fetchPets = (filters) => {
+    return async (dispatch) => {
+        console.log("fetching pets....");
+        dispatch({ type: GET_PETS_REQUEST });
+        try {
+            let url = 'https://excited-cod-beret.cyclic.app/pets/get?';
+            for (const key in filters) {
+                if (filters[key]) {
+                    if (Array.isArray(filters[key])) {
+                        filters[key].forEach((value) => {
+                            url += `${key}=${value}&`;
+                        });
+                    } else {
+                        url += `${key}=${filters[key]}&`;
+                    }
+                }
             }
-          // dispatch({type:LOGIN_SUCCESS,payload:res.data})
-          })
-          .catch((error) => {
-            resolve(false);
-  
+
+            let data = await axios.get(url);
+            // console.log(data.data);
+            dispatch({ type: GET_PETS_SUCCESS, payload: data.data.pets });
+        } catch (error) {
             console.log(error);
-            dispatch({type: LOGIN_FAILURE});
-          });
-    });
-  };
-  
-  export const userLogout = (dispatch) => {
-    dispatch({type: LOGOUT_SUCCESS});
-  };
-  
+            dispatch({ type: GET_PETS_FAILURE });
+        }
+    };
+};
+
+
+
+export const GetSingleData = (petid)=>{
+    return async(dispatch)=>{
+        console.log(`getting single pet with id ${petid}`);
+        dispatch({type:GET_SINGLE_PET_REQUEST});
+        try {
+            let data = (await axios.get(`https://excited-cod-beret.cyclic.app/pets/get/${petid}`)).data;
+            dispatch({type:GET_SINGLE_PET_SUCCESS,payload:data.data});
+        } catch (error) {
+            console.log(error);
+            dispatch({type:GET_SINGLE_PET_FAILURE})
+        }
+    }
+}
+
+
+export const validateLogin = (user)=>{
+    const {email,pass} = user;
+}
