@@ -1,14 +1,6 @@
 // HomePage.jsx
-
-
-
 import Article from "../components/Article";
-import Carousel from "../components/Carosuel";
-
-
-
-
-
+import FirstDiv from "../components/FirstDiv";
 
 const HomePage = () => {
   return (

@@ -9,6 +9,7 @@ import Contact from '../Pages/Contact';
  import { LoginForm } from '../Pages/Login';
  import About from '../Pages/About';
 import SignUp from '../components/SignUp';
+import MyApplication from '../Pages/MyApplication';
 
 
 function Allroutes() {
@@ -23,6 +24,7 @@ function Allroutes() {
       <Route path="/About" element={<About />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/SignUp" element={<SignUp />} />
+      <Route path="/Application" element={<MyApplication/>}/>
       
 
 

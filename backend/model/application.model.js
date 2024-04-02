@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const applicationSchema = mongoose.Schema({
 	name:String,
     contact:Number,
-    id:String,
+    AadharId:String,
     address:String,
     reason:String,
     userId:String,
