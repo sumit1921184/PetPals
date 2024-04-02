@@ -1,26 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 
-<<<<<<< HEAD
 import Homepage from "../Pages/HomePage";
 import Contact from "../Pages/Contact";
 import { LoginForm } from "../Pages/Login";
 import About from "../Pages/About";
-import SignUp from "../Components/SignUp";
+import SignUp from "../components/SignUp";
 import Adopt from "../Pages/Adopt";
-=======
-
-
-import { Route, Routes } from 'react-router-dom';
-
-
-import Homepage from '../Pages/HomePage';
-import Contact from '../Pages/Contact';
- import { LoginForm } from '../Pages/Login';
- import About from '../Pages/About';
-import SignUp from '../components/SignUp';
-import MyApplication from '../Pages/MyApplication';
-
->>>>>>> 4e3e0f5b2984d39ad2a5b66ade685f00377d0ec4
 
 function Allroutes() {
   return (
@@ -31,13 +16,6 @@ function Allroutes() {
       <Route path="/About" element={<About />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/SignUp" element={<SignUp />} />
-<<<<<<< HEAD
-=======
-      <Route path="/Application" element={<MyApplication/>}/>
-      
-
-
->>>>>>> 4e3e0f5b2984d39ad2a5b66ade685f00377d0ec4
     </Routes>
   );
 }
