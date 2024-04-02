@@ -55,6 +55,17 @@ applicationRouter.delete("/delete/:id",async(req,res)=>{
     }
 })
 
+applicationRouter.get("/getApp",auth,async(req,res)=>{
+    const userId = req.id;
+    try{
+        const application = await ApplicationModel.find({userId})
+        res.status(200).json({application})
+    }
+    catch(e){
+        res.status(400).json({e})
+    }
+})
+
 module.exports = {
     applicationRouter
 }
