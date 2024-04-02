@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -15,34 +15,61 @@ import { toast } from "react-toastify";
 
 const Adopt = () => {
   const [data, setData] = useState([]);
-  const [Loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
+  const [searchInput, setSearchInput] = useState("");
+  const [filterType, setFilterType] = useState("");
+  const [filterColor, setFilterColor] = useState("");
+  const petsPerPage = 8;
 
   useEffect(() => {
-    fetchrender(page);
-  }, [page]);
+    fetchPets();
+  }, [page, filterType, filterColor]);
 
-  const handclick = (val) => {
-    setPage(page + val);
-  };
-
-  const fetchrender = async (page) => {
+  const fetchPets = async () => {
     try {
-      const res = await fetch(
-        `https://petpals-4.onrender.com/pet/?page=${page}`
-      );
-      const data = await res.json();
+      const res = await fetch(`https://petpals-4.onrender.com/pet`);
+      const { pets } = await res.json();
       setLoading(false);
-      console.log(data.pets);
-      setData(data.pets);
+      setData(pets);
     } catch (err) {
       setLoading(false);
       setError(true);
     }
   };
 
-  if (Loading) {
+  const filteredPets = data.filter((pet) => {
+    if (filterType && filterType !== "" && pet.type !== filterType) return false;
+    if (filterColor && filterColor !== "" && pet.color !== filterColor) return false;
+    if (searchInput && !pet.name.toLowerCase().includes(searchInput.toLowerCase())) return false;
+    return true;
+  });
+
+  const indexOfLastPet = page * petsPerPage;
+  const indexOfFirstPet = indexOfLastPet - petsPerPage;
+  const currentPets = filteredPets.slice(indexOfFirstPet, indexOfLastPet);
+
+  const handleSearchInputChange = (event) => {
+    setSearchInput(event.target.value);
+    setPage(1);
+  };
+
+  const handleFilterTypeChange = (event) => {
+    setFilterType(event.target.value);
+    setPage(1);
+  };
+
+  const handleFilterColorChange = (event) => {
+    setFilterColor(event.target.value);
+    setPage(1);
+  };
+
+  const handlePagination = (pageNumber) => {
+    setPage(pageNumber);
+  };
+
+  if (loading) {
     return (
       <Center p={"150px"}>
         <Spinner
@@ -64,16 +91,49 @@ const Adopt = () => {
 
   return (
     <>
+      <div style={{ display: "flex", alignItems: "center", marginLeft: "5rem",gap: "10px",marginTop: "10px"  }}>
+     
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchInput}
+          onChange={handleSearchInputChange}
+          style={{backgroundColor: "#f5f5f5", borderRadius: "5px", padding: "5px", marginRight: "10px",borderColor: "grey"}}
+        />
+
+
+        <select style={{backgroundColor: "#f5f5f5", borderRadius: "5px", padding: "5px", marginRight: "10px",borderColor: "grey"}}
+          value={filterType}
+          onChange={handleFilterTypeChange}
+        >
+          <option value="">All Types</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+        </select>
+
+        <select style={{backgroundColor: "#f5f5f5", borderRadius: "5px", padding: "5px", marginRight: "10px",borderColor: "grey"}}
+          value={filterColor}
+          onChange={handleFilterColorChange}
+        >
+          <option value="">All Colors</option>
+          <option value="brown">Brown</option>
+          <option value="black">Black</option>
+          <option value="white">White</option>
+          <option value="gray">Gray</option>
+          <option value="cream">Cream</option>
+          <option value="red">Red</option>
+     
+        </select>
+      </div>
       <div style={{ paddingTop: "70px", paddingBottom: "70px" }}>
+        
+
         <Grid
           textAlign={"left"}
           color={"#171616"}
-          // border="2px solid red"
           w="90%"
           m="auto"
-          h={{ base: "4950px", md: "2000px", xl: "1000px" }}
-          gap={{ base: "2%", md: "3%", xl: "4%" }}
-          //  pt={"100px"}
+          gap={{ base: "20px", md: "30px", lg: "40px", xl: "50px" }}
           justifyContent={"center"}
           templateColumns={{
             base: "repeat(1,1fr)",
@@ -82,52 +142,37 @@ const Adopt = () => {
             xl: "repeat(4,1fr)",
           }}
         >
-          {data.map((ele, i) => (
+          {currentPets.map((pet) => (
             <Box
-              boxShadow="yellow 0px 8px 24px"
+              key={pet._id}
+              boxShadow="grey 0px 8px 24px"
               display={"flex"}
+              flexDirection={"column"}
               p={"20px"}
-              pt="0px"
-              flexDir={"column"}
               _hover={{
                 transform: "scale(1.02)",
                 transition: "transform 0.4s",
               }}
-              //  h={"350px"}
-              key={i}
+              style={{borderRadius: "10px"}}
+              gap="10px"
             >
-              <Image src={ele.url} w="100%" h="180px" m={"auto"} />
-              <Flex justifyContent={"space-around"} alignItems={"center"}>
-                <Flex direction="column" gap="2%">
-                  <Heading
-                    as="h6"
-                    fontSize="20px"
-                    textAlign="center"
-                    mt="7px"
-                    mb="5px"
-                  >
-                    {ele.name}
-                  </Heading>
-                  <Flex display="flex" justifyContent="space-between">
-                    <Text fontSize={"16px"} color="black">
-                      {" "}
-                      Type: {ele.type}
-                    </Text>
-
-                    <Text fontSize={"16px"} color="black">
-                      {" "}
-                      Age: {ele.age}
-                    </Text>
-                  </Flex>
-                  <Text fontSize={"16px"} color="black">
-                    {" "}
-                    Gender: {ele.gender}
-                  </Text>
-                  <Text fontSize={"16px"} color="black" textAlign="justify">
-                    {" "}
-                    Description: {ele.description}
-                  </Text>
-                </Flex>
+              <Image src={pet.url} m={"auto"} style={{ borderRadius: "10px", width: "100%", height: "230px" }}
+        />
+              <Flex flexDirection={"column"} gap="10px">
+                <Heading
+                  as="h6"
+                  fontSize="20px"
+                  textAlign="center"
+                  mt="7px"
+                  mb="5px"
+                >
+                  Name: {pet.name}
+                </Heading>
+                <Text><strong>Type:</strong> {pet.type}</Text>
+                <Text> <strong>Gender:</strong> {pet.gender}</Text>
+                <Text><strong>Color: </strong>{pet.color}</Text>
+                <Text><strong>Age: </strong>{pet.age}</Text>
+                <Text><strong>Description:</strong> {pet.description}</Text>
               </Flex>
               <Button m="auto" bgColor="orange">
                 Adopt Me
@@ -140,7 +185,7 @@ const Adopt = () => {
         <ButtonGroup variant="outline" spacing="7">
           <Button
             bgColor="yellow"
-            onClick={() => handclick(-1)}
+            onClick={() => handlePagination(page - 1)}
             isDisabled={page === 1}
           >
             Previous
@@ -148,8 +193,8 @@ const Adopt = () => {
           <p>{page}</p>
           <Button
             bgColor="yellow"
-            onClick={() => handclick(1)}
-            isDisabled={page === 3}
+            onClick={() => handlePagination(page + 1)}
+            isDisabled={currentPets.length < petsPerPage}
           >
             Next
           </Button>
