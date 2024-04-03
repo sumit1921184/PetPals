@@ -44,7 +44,7 @@ petRouter.get("/", async (req, res) => {
 
 
 
-petRouter.post("/", access("admin"),async (req, res) => {
+petRouter.post("/",auth,access("admin"),async (req, res) => {
     const payload = req.body;
     try {
         const pet = new PetModel(payload);
@@ -55,7 +55,7 @@ petRouter.post("/", access("admin"),async (req, res) => {
     }
 });
 
-petRouter.patch("/:id",async (req, res) => {
+petRouter.patch("/:id",auth,access("admin"),async (req, res) => {
     const { id } = req.params;
     const payload = req.body;
     try {
