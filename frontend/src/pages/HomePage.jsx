@@ -1,6 +1,7 @@
 // HomePage.jsx
 import Article from "../components/Article";
 import FirstDiv from "../components/FirstDiv";
+import Review from "../Components/Review";
 
 const HomePage = () => {
   return (
