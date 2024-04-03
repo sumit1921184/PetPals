@@ -12,7 +12,8 @@ const Footer = () => {
             justify="space-between"
             wrap="wrap"
             padding="2rem"
-            bgGradient="linear(to-r, orange.400, yellow.400)"
+            // bgGradient="linear(to-r, orange.400, yellow.400)"
+            bg={'#FFA161'}
             color="white"
         >
             <SimpleGrid
