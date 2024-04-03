@@ -1,5 +1,7 @@
 .navbar {
-    background: linear-gradient(135deg, #FFA500, #FFFF00);
+    /* background: linear-gradient(135deg, #FFA500, #FFFF00);
+     */
+     background-color: #FFA161;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -11,6 +13,7 @@
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
+
   }
   
   .navbar-logo img {
@@ -29,7 +32,7 @@
   .nav-link {
     text-decoration: none;
     padding: 10px;
-    color:grey;
+    color:rgb(58, 56, 56);
     gap: 30px;
     font-weight: bold;
     font-size: 20px;
@@ -42,7 +45,7 @@
   }
   
   .mobile-menu-icon {
-    display: none; /* Hide by default on larger screens */
+    display: none; /* Hide by default on larger screen */
     cursor: pointer;
   }
   

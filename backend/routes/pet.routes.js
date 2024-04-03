@@ -23,9 +23,19 @@ petRouter.get("/:id", async (req, res) => {
 
 
 petRouter.get("/", async (req, res) => {
+    const { page } = req.query
+    const limitValue = 8
+    const skipValue = (limitValue*page)-limitValue
     try {
-        const pets = await PetModel.find();
-        res.status(200).json({ pets });
+        if(page){
+            const pets = await PetModel.find().skip(skipValue).limit(limitValue);
+            res.status(200).json({ msg:"pagination wala pet ",pets });
+        }
+        else{
+            const pets = await PetModel.find();
+            res.status(200).json({ pets });
+        }
+        
     } catch (e) {
         res.status(400).json({ error: e.message });
     }
@@ -64,6 +74,8 @@ petRouter.delete("/:id", async (req, res) => {
         res.status(400).json({ error: e.message });
     }
 });
+
+
 
 module.exports = {
     petRouter
