@@ -1,10 +1,12 @@
 
-import { Box, Link, Button , Icon} from '@chakra-ui/react';
+import { Box, Button , Icon} from '@chakra-ui/react';
 import backgroundImage from '../assets/64572.jpg';
 import { FaArrowRight } from 'react-icons/fa';
 
 
+
 const FirstDiv = () => {
+
   return (
     <Box
       className='home'
@@ -21,9 +23,9 @@ const FirstDiv = () => {
       
       
       <Box alignSelf="flex-start" marginLeft="150px" marginTop="400px">
-        <Link to="/adopt">
-          <Button background={'orange'} color={'black'} >Get Started</Button>
-        </Link>
+        
+      <Button onClick={() => window.location.href = '/adopt'} background={'orange'} color={'black'} >Get Started</Button>
+        
         <Icon as={FaArrowRight} ml={2} />
       </Box>
       </Box>

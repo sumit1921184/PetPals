@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import BONVOYAGELOGO from "../assets/Pet pals_prev_ui.png/";
 import { FaBars } from "react-icons/fa";
+
 import "../CSS/Navbar.css";
+import { Menu, MenuButton, MenuDivider, MenuGroup, MenuItem, MenuList, Button } from "@chakra-ui/react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,12 +44,30 @@ export const Navbar = () => {
           </Link>
           <Link to="/login" className="nav-link">
             Login
-          </Link>
+          </Link> 
+          
           <Link to="/signup" className="nav-link">
             Signup
           </Link>
-        </div>
-
+        </div> 
+        <Menu>
+  <MenuButton as={Button} colorScheme='#1D2B53' color= 'black' borderColor='black'>
+    Profile
+  </MenuButton>
+  <MenuList>
+    <MenuGroup title='Profile'>
+      <Link to="/Application">
+      <MenuItem>Application</MenuItem>
+      </Link>
+      
+    </MenuGroup>
+    <MenuDivider />
+    <MenuGroup title='Help'>
+      <MenuItem>FAQ</MenuItem>
+      <MenuItem>Logout</MenuItem>
+    </MenuGroup>
+  </MenuList>
+</Menu>
         <div className="mobile-menu-icon" onClick={handleToggleMenu}>
           <FaBars />
 
