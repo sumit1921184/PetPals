@@ -1,10 +1,10 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux"; 
-import { store } from "./Redux/store"; 
-import { Navbar } from "./components/Navbar";
+import { Provider } from "react-redux";
+import { store } from "./Redux/store";
+import { Navbar } from "./Components/Navbar";
 
 import Allroutes from "./Routing/AllRoutes";
-import Footer from "./components/footer";
+import Footer from "./Components/footer";
 
 function App() {
   return (

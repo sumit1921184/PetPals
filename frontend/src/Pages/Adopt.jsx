@@ -37,6 +37,49 @@ const Adopt = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const petsPerPage = 8;
 
+  // Form Data
+  const [name, setname] = useState();
+
+  const [contact, setContact] = useState();
+  const [AadharId, setAadharId] = useState();
+  const [address, setAddress] = useState();
+  const [reason, setreason] = useState();
+
+  const [formdata, setform] = useState();
+  console.log(formdata);
+
+  async function fetchform(petId) {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Token not found in local storage");
+      }
+
+      const response = await fetch(
+        `https://petpals-4.onrender.com/application/${petId}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formdata),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+      return responseData;
+    } catch (error) {
+      console.error("There was a problem with your fetch operation:", error);
+      return null;
+    }
+  }
+
   useEffect(() => {
     fetchPets();
   }, [page, filterType, filterColor]);
@@ -239,34 +282,55 @@ const Adopt = () => {
                 Adopt Me
               </Button>
               <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
+                {/* <ModalOverlay /> */}
                 <ModalContent>
                   <ModalHeader>Application Form</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                    <form
-                      onSubmit={() => {
-                        alert("submit");
-                      }}
-                    >
+                    <form>
                       <FormControl>
                         <FormLabel>Name</FormLabel>
-                        <Input type="email" placeholder="First name" />
+                        <Input
+                          type="email"
+                          placeholder="First name"
+                          onChange={(e) => setname(e.target.value)}
+                        />
                       </FormControl>
 
                       <FormControl>
                         <FormLabel>Contact</FormLabel>
-                        <Input type="number" placeholder="Contact" />
+                        <Input
+                          type="number"
+                          placeholder="Contact"
+                          onChange={(e) => setContact(e.target.value)}
+                        />
                       </FormControl>
 
                       <FormControl>
                         <FormLabel>AadharId</FormLabel>
-                        <Input type="text" placeholder="Adhare ID" />
+                        <Input
+                          type="text"
+                          placeholder="Adhare ID"
+                          onChange={(e) => setAadharId(e.target.value)}
+                        />
+                      </FormControl>
+
+                      <FormControl>
+                        <FormLabel>Address</FormLabel>
+                        <Input
+                          type="text"
+                          placeholder="Adhare ID"
+                          onChange={(e) => setAddress(e.target.value)}
+                        />
                       </FormControl>
 
                       <FormControl>
                         <FormLabel>Reason</FormLabel>
-                        <Input type="text" placeholder="Reason" />
+                        <Input
+                          type="textarea"
+                          placeholder="Reason"
+                          onChange={(e) => setreason(e.target.value)}
+                        />
                       </FormControl>
                     </form>
                   </ModalBody>
@@ -275,6 +339,9 @@ const Adopt = () => {
                       type="submit"
                       onClick={() => {
                         alert("Submit");
+                        console.log(pet._id);
+                        setform({ name, contact, AadharId, address, reason });
+                        fetchform(pet._id);
                       }}
                     >
                       Submit
