@@ -33,8 +33,8 @@ const {_id:petId,name:petName,age:petAge,color,gender:petGender,url,description,
     }
 
 })
-
-applicationRouter.get("/",auth,async(req,res)=>{
+// admin get route
+applicationRouter.get("/",auth,access("admin"), async(req,res)=>{
     try{
         const application = await ApplicationModel.find()
 		res.status(200).json({application})
@@ -67,7 +67,7 @@ applicationRouter.delete("/delete/:id",auth,access("admin"),async(req,res)=>{
     }
 })
 
-applicationRouter.get("/getApp",auth,access("admin"),async(req,res)=>{
+applicationRouter.get("/getApp",auth,async(req,res)=>{
     const userId = req.id;
     try{
         const application = await ApplicationModel.find({userId})

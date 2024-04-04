@@ -87,7 +87,7 @@
       z-index: 1000;
       align-items: flex-start;
       padding: 50px 20px;
-      background: linear-gradient(135deg, #FFA500, #FFFF00);
+      background: #FFA161;
       flex-direction: column;
       transform: translateX(-100%);
       transition: transform 0.3s ease-in-out;
@@ -102,5 +102,15 @@
     .menu-drawer.open {
       transform: translateX(0);
     }
+    .menu-sumit{
+    display: hidden;
+    background-color: red;
+    }
   }
+  .logout{
+    color:white;
+    font-size: 18px;
+  }
+
+  
   

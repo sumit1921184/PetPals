@@ -61,14 +61,18 @@ function Contact() {
     <>
       <Box w="100%">
         <Box
-          bgImage="url('https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0JTIwYW5kJTIwZG9nfGVufDB8fDB8fHww')"
+          bgImage="url('https://img.freepik.com/free-photo/group-portrait-five-adorable-puppies_53876-64839.jpg?size=626&ext=jpg&ga=GA1.1.1389500355.1706119030&semt=ais')"
           bgSize="cover"
           bgPosition="center"
           bgRepeat="no-repeat"
+          filter="blur(1px)"
+          zIndex="-1000"
+          bgOpacity={0.5} // Set the opacity value here (0.5 for 50% opacity)
           // h="100vh" // Set the height of the box
           w="100%"
           h="370px"
         >
+           
           <VStack
             spacing={4}
             alignItems="center"
@@ -86,7 +90,7 @@ function Contact() {
               textShadow="0px 4px 4px rgb(95, 87, 87)"
               textAlign="left"
             >
-              <b>Contact</b>
+              <b style={{zIndex:"100"}}>Contact</b>
               <br />
             </Heading>
             <Text
@@ -219,7 +223,7 @@ function Contact() {
           </div>
         </div>
 
-        <Box as="footer" py={20} fontSize={12} w="100%">
+        {/* <Box as="footer" py={20} fontSize={12} w="100%">
           <Container maxW="container.xl" w="80%">
             <Flex
               direction={{ base: "column", sm: "row" }}
@@ -327,6 +331,7 @@ function Contact() {
             </Flex>
           </Container>
         </Box>
+      </Box> */}
       </Box>
     </>
   );

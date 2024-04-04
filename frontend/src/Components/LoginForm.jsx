@@ -29,20 +29,32 @@ export default function Login() {
     })
     let dataa= await res.json();
     console.log(dataa);
-    const tok=localStorage.setItem("token",JSON.stringify(dataa.token));
-    dispatch({ type: LOGIN_SUCCESS });
-        toast({
-          title: dataa.msg,
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-        });
-        dispatch({ type: get_USER_SUCCESS});
-        console.log(res.data);
     
-     setTimeout(() => {
-          navigate("/")
-        }, 1500);
+   
+    if(res.ok){
+      setTimeout(() => {
+        navigate("/")
+      }, 1500);
+      const tok=localStorage.setItem("token",JSON.stringify(dataa.token));
+      dispatch({ type: LOGIN_SUCCESS });
+      toast({
+        title: dataa.msg,
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      });
+      dispatch({ type: get_USER_SUCCESS});
+      console.log(res.data);
+    }
+    else{
+      toast({
+        title: dataa.msg,
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+    
     }
     catch(err){
       console.log(err.res);

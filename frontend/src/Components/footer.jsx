@@ -36,8 +36,8 @@ const Footer = () => {
                     <Text fontSize="lg" mb={2} fontWeight="bold" color="black">
                         Quick Links
                     </Text>
-                    <Link to="Quick Links" style={{ textDecoration: 'none', color: 'black', marginBottom: '0.5rem' }}>
-                        Shop
+                    <Link to="https://pet-pals-admin.vercel.app/" target='blank' style={{ textDecoration: 'none', color: 'black', marginBottom: '0.5rem' }}>
+                        Admin Login
                     </Link>
                     <Link to="/About" style={{ textDecoration: 'none', color: 'black', marginBottom: '0.5rem' }}>
                         About

@@ -8,6 +8,10 @@
 main{
     flex: 1;
 }
+.img-right{
+    height:200px;
+    width:300px;
+}
 .applied{
     color:rgb(44, 236, 44);
 }
@@ -35,7 +39,7 @@ main{
     width:80%;
     background-color: #f3eeeb;
     display: flex;
-    margin: 30px auto;
+    margin: 50px auto;
     padding:20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

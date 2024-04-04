@@ -22,13 +22,11 @@ function Allroutes() {
       <Route path="/" element={<Homepage />} />
       <Route path="/adopt" element={<Adopt />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/About" element={<About />} />
+      <Route path="/about" element={<About />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/SignUp" element={<SignUp />} />
 
-      <Route path="/application" element={<PrivateRouting>{<application />}</PrivateRouting>} />
-
-      <Route path="/application" element={<MyApplication/>}/>
+      <Route path="/Application" element={<PrivateRouting>{<MyApplication />}</PrivateRouting>} />
 
     </Routes>
   );

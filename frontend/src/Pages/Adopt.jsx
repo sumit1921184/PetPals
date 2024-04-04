@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import {
   Box,
   Flex,
@@ -11,6 +10,10 @@ import {
   Text,
   Spinner,
   Center,
+  FormControl,
+  FormLabel,
+  Input,
+  useDisclosure,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -18,11 +21,6 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  FormControl,
-  FormLabel,
-  Input,
-  useDisclosure,
-  FormHelperText,
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
 
@@ -34,51 +32,26 @@ const Adopt = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filterType, setFilterType] = useState("");
   const [filterColor, setFilterColor] = useState("");
-  const { isOpen, onClose, onOpen } = useDisclosure();
+  const [selectedPet, setSelectedPet] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const petsPerPage = 8;
 
   // Form Data
-  const [name, setname] = useState();
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    AadharId: "",
+    address: "",
+    reason: "",
+  });
 
-  const [contact, setContact] = useState();
-  const [AadharId, setAadharId] = useState();
-  const [address, setAddress] = useState();
-  const [reason, setreason] = useState();
-
-  const [formdata, setform] = useState();
-  console.log(formdata);
-
-  async function fetchform(petId) {
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        throw new Error("Token not found in local storage");
-      }
-
-      const response = await fetch(
-        `https://petpals-4.onrender.com/application/${petId}`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formdata),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const responseData = await response.json();
-      console.log(responseData);
-      return responseData;
-    } catch (error) {
-      console.error("There was a problem with your fetch operation:", error);
-      return null;
-    }
-  }
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   useEffect(() => {
     fetchPets();
@@ -93,6 +66,7 @@ const Adopt = () => {
     } catch (err) {
       setLoading(false);
       setError(true);
+      console.error("Error fetching pets:", err);
     }
   };
 
@@ -132,25 +106,62 @@ const Adopt = () => {
     setPage(pageNumber);
   };
 
-  if (loading) {
-    return (
-      <Center p={"150px"}>
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="black.500"
-          size="xl"
-        />
-      </Center>
-    );
-  } else if (error) {
-    return toast({
-      title: `Try Again`,
-      status: "error",
-      isClosable: true,
-    });
-  }
+  const handleFormSubmit = async () => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    const { name, contact, AadharId, address, reason } = formData;
+    try {
+      const petId = selectedPet._id;
+      const response = await fetch(
+        `https://petpals-4.onrender.com/application/${petId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`, 
+          },
+          body: JSON.stringify({
+            name,
+            contact,
+            AadharId,
+            address,
+            reason,
+          }),
+        }
+      );
+        console.log(name, contact, AadharId, address, reason);
+   
+      const responseData = await response.json();
+      if(responseData.ok){
+        toast({
+          title: responseData.msg,
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+      else{
+        toast({
+          title: responseData.msg,
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+      console.log(responseData);
+      toast({
+        title: responseData.msg,
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
+      onClose();
+    } catch (error) {
+      toast.error('Please login');
+      console.error("Error submitting application:", error);
+      toast.error("Failed to submit application. Please try again later.");
+    }
+  };
+  
 
   return (
     <>
@@ -161,6 +172,8 @@ const Adopt = () => {
           marginLeft: "5rem",
           gap: "10px",
           marginTop: "10px",
+          justifyContent:"center",
+          marginTop:"50px",
         }}
       >
         <input
@@ -244,7 +257,11 @@ const Adopt = () => {
               <Image
                 src={pet.url}
                 m={"auto"}
-                style={{ borderRadius: "10px", width: "100%", height: "230px" }}
+                style={{
+                  borderRadius: "10px",
+                  width: "100%",
+                  height: "230px",
+                }}
               />
               <Flex flexDirection={"column"} gap="10px">
                 <Heading
@@ -275,84 +292,88 @@ const Adopt = () => {
                   <strong>Description:</strong> {pet.description}
                 </Text>
               </Flex>
-              {/* <Button m="auto" bgColor="orange">
-                Adopt Me
-              </Button> */}
-              <Button m="auto" bgColor="orange" onClick={onOpen}>
+              <Button m="auto" bgColor="orange" onClick={() => {
+                setSelectedPet(pet);
+                onOpen();
+              }}>
                 Adopt Me
               </Button>
-              <Modal isOpen={isOpen} onClose={onClose}>
-
-                <ModalContent>
-                  <ModalHeader>Application Form</ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>
-                    <form>
-                      <FormControl>
-                        <FormLabel>Name</FormLabel>
-                        <Input
-                          type="email"
-                          placeholder="First name"
-                          onChange={(e) => setname(e.target.value)}
-                        />
-                      </FormControl>
-
-                      <FormControl>
-                        <FormLabel>Contact</FormLabel>
-                        <Input
-                          type="number"
-                          placeholder="Contact"
-                          onChange={(e) => setContact(e.target.value)}
-                        />
-                      </FormControl>
-
-                      <FormControl>
-                        <FormLabel>AadharId</FormLabel>
-                        <Input
-                          type="text"
-                          placeholder="Adhare ID"
-                          onChange={(e) => setAadharId(e.target.value)}
-                        />
-                      </FormControl>
-
-                      <FormControl>
-                        <FormLabel>Address</FormLabel>
-                        <Input
-                          type="text"
-                          placeholder="Adhare ID"
-                          onChange={(e) => setAddress(e.target.value)}
-                        />
-                      </FormControl>
-
-                      <FormControl>
-                        <FormLabel>Reason</FormLabel>
-                        <Input
-                          type="textarea"
-                          placeholder="Reason"
-                          onChange={(e) => setreason(e.target.value)}
-                        />
-                      </FormControl>
-                    </form>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      type="submit"
-                      onClick={() => {
-                        alert("Submit");
-                        console.log(pet._id);
-                        setform({ name, contact, AadharId, address, reason });
-                        fetchform(pet._id);
-                      }}
-                    >
-                      Submit
-                    </Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
             </Box>
           ))}
         </Grid>
       </div>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Application Form</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <form>
+              <FormControl>
+                <FormLabel>Name</FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>Contact</FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Contact"
+                  name="contact"
+                  value={formData.contact}
+                  onChange={handleInputChange}
+                />
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>Aadhar ID</FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Aadhar ID"
+                  name="AadharId"
+                  value={formData.AadharId}
+                  onChange={handleInputChange}
+                />
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>Address</FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                />
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>Reason</FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Reason"
+                  name="reason"
+                  value={formData.reason}
+                  onChange={handleInputChange}
+                />
+              </FormControl>
+            </form>
+          </ModalBody>
+          <ModalFooter>
+            <Button type="submit" onClick={handleFormSubmit}>
+              Submit
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
       <Flex m="auto" width="28%" mb="20px">
         <ButtonGroup variant="outline" spacing="7">
           <Button
