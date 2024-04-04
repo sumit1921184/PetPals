@@ -2,23 +2,34 @@ const express = require("express");
 const { ApplicationModel } = require("../model/application.model");
 const { auth } = require("../middlewares/auth.middleware")
 const applicationRouter = express.Router();
+const{PetModel} = require("../model/pet.model")
 const {access} = require("../middlewares/access.middleware")
 
 applicationRouter.post("/:petId",auth,async(req,res)=>{
     const { petId } = req.params
     const payload = req.body
     const userId = req.id
+    const petData= await PetModel.findOne({_id:petId});
+    console.log(petData);
     try{
+const {_id:petId,name:petName,age:petAge,color,gender:petGender,url,description,isAdopted}= petData
         const application = new ApplicationModel({
             ...payload,
             petId,
+            petName,
+            petAge,
+            color,
+            petGender,
+            url,
+            description,
+            isAdopted,
             userId
         })
         await application.save();
         res.status(200).json({msg:"Application sent"})
     }
     catch(e){
-        res.status(400).json({err})
+        res.status(400).json({e})
     }
 
 })

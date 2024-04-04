@@ -9,24 +9,32 @@ const {access} = require("../middlewares/access.middleware")
 const userRouter = express.Router()
 
 
-userRouter.post("/register", (req,res) => {
-	const { username, email, pass, role, age} = req.body
+userRouter.post("/register", async(req,res) => {
+	
 	try {
-		bcrypt.hash(pass, 5, async(err, hash) => {
-			if (err) {
-				res.status(200).json({err})
-			} else {
-				const user = new UserModel({
-					username,
-					email,
-                    role,
-					age,
-					pass: hash
-				})
-				await user.save()
-				res.status(200).json({msg:"The new user has been registered!"})
-			}
-		})
+		const { username, email, pass, role, age} = req.body
+		let email1 = await UserModel.findOne({email:email});
+		if(email1){
+			res.status(200).json({msg:"You are already registered please log in"})
+		}
+		else{
+			bcrypt.hash(pass, 5, async(err, hash) => {
+				if (err) {
+					res.status(200).json({err})
+				} else {
+					const user = new UserModel({
+						username,
+						email,
+						role,
+						age,
+						pass: hash
+					})
+					await user.save()
+					res.status(200).json({msg:"The new user has been registered!"})
+				}})
+		}
+		
+		
 	} catch(err) {
 		res.status(400).json({err})
 	}
