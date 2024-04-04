@@ -39,7 +39,7 @@ export default function Register() {
         }
 
         try {
-            const res = await axios.post("https://excited-cod-beret.cyclic.app/users/register", formData);
+            const res = await axios.post("https://petpals-4.onrender.com/users/register", formData);
             console.log(formData);
             toast({
                 title: res.data.msg,
