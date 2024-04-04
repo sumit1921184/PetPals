@@ -34,7 +34,7 @@ const {_id:petId,name:petName,age:petAge,color,gender:petGender,url,description,
 
 })
 
-applicationRouter.get("/",auth,access("admin"), .async(req,res)=>{
+applicationRouter.get("/",auth,access("admin"), async(req,res)=>{
     try{
         const application = await ApplicationModel.find()
 		res.status(200).json({application})
