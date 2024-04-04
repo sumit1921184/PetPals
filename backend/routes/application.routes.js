@@ -33,7 +33,7 @@ const {_id:petId,name:petName,age:petAge,color,gender:petGender,url,description,
     }
 
 })
-
+// admin get route
 applicationRouter.get("/",auth,access("admin"), async(req,res)=>{
     try{
         const application = await ApplicationModel.find()
