@@ -70,7 +70,7 @@
       margin-top: 20px;
     } 
      .contactForm{ 
-       background-color:rgb(173, 159, 159); 
+       background-color:#FFA161; 
        /* border:2px solid red; */
        align-content: center;
        /* width: 885px; */
@@ -93,7 +93,7 @@
     } 
     
      .errorMessage {
-      color: red;
+      color: white;
       font-size: 14px;
       margin-left: 20px;
       padding: 0;
@@ -103,10 +103,10 @@
       padding: 5px 10px;
       border-radius: 10px;
       margin-bottom: 25px;
-      background-color:#dcdada;
-      color: rgb(228, 199, 199);
+      background-color:#FFA161;
+      color:black;
       text-align: center;
-      background: blue;
+      background: orange;
       padding: 10px 15px 10px 15px;
       margin-left: 375px; 
     }
@@ -150,7 +150,7 @@
             background-color:#dcdada;
             color: rgb(228, 199, 199);
             text-align: center;
-            background: blue;
+            background: orange;
             padding: 10px 15px 10px 15px;
             margin-left: 155px; 
           }

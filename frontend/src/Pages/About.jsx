@@ -75,37 +75,15 @@ const About = () => {
             risk of dogs being returned to the shelter or rescue organization.
           </Text>
         </GridItem>
-        <GridItem w="100%">
-          <Image src="https://pub.mdpi-res.com/animals/animals-12-02562/article_deploy/html/images/animals-12-02562-g001.png?1664165685" />
-
-          <Heading fontSize="25px">Post-Adoption Support and Follow-Up</Heading>
-          <Text
-            margin="auto"
-            pt="20px"
-            pb="10px"
-            fontSize="18px"
-            textAlign="justify"
-          >
-            Offer post-adoption support and follow-up to ensure the ongoing
-            well-being of the adopted dogs. Provide resources, guidance,
-            behavior training, and access to veterinary services. Regular
-            follow-up communication helps address any concerns or challenges
-            that may arise and reinforces the bond between adopters and their
-            new pets.
-          </Text>
-        </GridItem>
       </Grid>
       <br />
-      <Box w="90%" margin="auto">
-        ******************************** Team Member ********************
-      </Box>
       <br />
-      <Box w="70%" margin="auto">
+      <Box w="70%" margin="auto" marginTop="30px" marginBottom="50px">
         <Heading textAlign="center" fontSize="29px" mt="40px">
           {" "}
           OUR MISSION
         </Heading>
-        <Text textAlign="center">
+        <Text textAlign="center" marginTop="20px">
           To use Internet technology and the resources it can generate to:
         </Text>
         <br />
@@ -124,100 +102,6 @@ const About = () => {
           also includes discussion forums, a pet-care resource directory and a
           library of free pet-care articles to help keep pets in their homes.
         </Text>
-      </Box>
-
-      <Box w="70%" margin="auto">
-        <Heading textAlign="center" fontSize="29px" mt="40px">
-          {" "}
-          OUR STORY
-        </Heading>
-        <br />
-        <hr />
-        <Text fontFamily="bold" fontSize="19px">
-          Mar 21, 2024 by Lesley Spiller:
-        </Text>
-        <br />
-        <Text>
-          I am so pleased we have PetPals in our lives. They are so
-          professional, caring and 100% reliable. We would be lost without them
-          and I can thoroughly recommend them. Thank you PetPals x
-        </Text>
-        <br />
-        <hr />
-        <Text fontFamily="bold" fontSize="19px">
-          Mar 21, 2024 by Nicola
-        </Text>
-        <br />
-        <Text>
-          We are so happy to have found Petpals Bracknell as they look after our
-          cat (who needs daily medication) and our chickens!
-        </Text>
-        <br />
-        <hr />
-        <Text fontFamily="bold" fontSize="19px">
-          Mar 21, 2024 by Bess And Delfi
-        </Text>
-        <br />
-        <Text>
-          We have been very happy girls when Phil and Bev looked after us when
-          our humans are not hereOur Mum and Dad say they offer a brilliant
-          service and look after us like we were one of there own dogs which
-          makes us feel very specialThey also think they are very caring,
-          supportive , flexible and trustworthy.Sometimes our Mum has to work at
-          short notice or swop shifts and they can always manage to come and see
-          usOur Dad is retiring soon but we hope we still get to see Phil and
-          Bev from time to time as they are simply fabulous
-        </Text>
-        <br />
-        <hr />
-        <Text fontFamily="bold" fontSize="19px">
-          Mar 18, 2024 by Charlotte Wilson
-        </Text>
-        <br />
-        <Text>
-          Always been grateful to Peter and the team for the love and care they
-          have shown my various pets over the years. Highly professional and
-          reliable and, more importantly, they really do love and treat my pets
-          as if they were their own. Thank you
-        </Text>
-        <br />
-        <hr />
-        <Text fontFamily="bold" fontSize="19px">
-          Mar 15, 2024 by Chris Willman
-        </Text>
-        <br />
-        <Text>
-          The Basingstoke Petpals team of Alex and Phil have been walking and
-          helping with our dog Dusty for a couple of years now and I genuinely
-          could not be happier with them. They take absolute pride in providing
-          an exceptional service, always flexible where needed and responsive if
-          we need to discuss any changes with them; even at the last
-          minute.Ensuring our dog is taken care of and provided with a
-          professional - but fun and love filled - dog walk, particular to keep
-          her socialising regularly in the right mix of other dogs means a lot
-          to us and we really could not be happier with the awesome job they do.
-          And we are sure that Dusty our cockapoo would agree with every word
-          too!
-        </Text>
-        <br />
-        <hr />
-
-        <Text fontFamily="bold" fontSize="19px">
-          Mar 11, 2024 by Maria
-        </Text>
-        <br />
-        <Text>
-          James has been taking care of my cat on several occasions since last
-          October and I am so pleased I have found him. James is very
-          professional and he cares a lot about giving good care. The reports he
-          provides are very well detailed and it is very reassuring read them
-          when I am away (love the photos!). He is also very patient and
-          respectful, as always encourages Eowyn to play but never forces her
-          when is lazy. His service is fantastic and I would recommend him 100%.
-          Thank you so much for looking after Eowyn!
-        </Text>
-        <br />
-        <hr />
       </Box>
     </>
   );

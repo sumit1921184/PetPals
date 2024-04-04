@@ -29,11 +29,58 @@ export default function Login() {
     })
     let dataa= await res.json();
     console.log(dataa);
-    const tok=localStorage.setItem("token",JSON.stringify(dataa.token));
-    console.log(tok);
+    
+   
+    if(res.ok){
+      setTimeout(() => {
+        navigate("/")
+      }, 1500);
+      const tok=localStorage.setItem("token",JSON.stringify(dataa.token));
+      dispatch({ type: LOGIN_SUCCESS });
+      toast({
+        title: dataa.msg,
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      });
+      dispatch({ type: get_USER_SUCCESS});
+      console.log(res.data);
     }
-    catch(e){
-      console.log(e);
+    else{
+      toast({
+        title: dataa.msg,
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+    
+    }
+    catch(err){
+      console.log(err.res);
+      if (err.res && err.res.status === 400) {
+              toast({
+                title: err.response.data.error,
+                status: 'error',
+                duration: 2000,
+                isClosable: true,
+              });
+            } else if (err.response && err.response.status === 400) {
+              toast({
+                title: err.response.data.error,
+                status: 'error',
+                duration: 2000,
+                isClosable: true,
+              });
+            } else {
+              toast({
+                title: 'An error occurred',
+                status: 'error',
+                duration: 2000,
+                isClosable: true,
+              });
+            }
+            dispatch({ type: LOGIN_FAILURE });
     }
     
 
@@ -53,36 +100,14 @@ export default function Login() {
   //     });
   //     dispatch({ type: get_USER_SUCCESS, payload: res.data.user });
   //     console.log(res.data);
-  //     localStorage.setItem("token", res.data.token);
-  //     setTimeout(() => {
+  // 
+  //  setTimeout(() => {
   //       navigate("/")
   //     }, 1500);
   //   } catch (err) {
   //     console.error(err);
   //     // Handle different error statuses
-  //     if (err.response && err.response.status === 402) {
-  //       toast({
-  //         title: err.response.data.error,
-  //         status: 'error',
-  //         duration: 2000,
-  //         isClosable: true,
-  //       });
-  //     } else if (err.response && err.response.status === 403) {
-  //       toast({
-  //         title: err.response.data.error,
-  //         status: 'error',
-  //         duration: 2000,
-  //         isClosable: true,
-  //       });
-  //     } else {
-  //       toast({
-  //         title: 'An error occurred',
-  //         status: 'error',
-  //         duration: 2000,
-  //         isClosable: true,
-  //       });
-  //     }
-  //     dispatch({ type: LOGIN_FAILURE });
+  //     
   //   }
   // };
   return (
