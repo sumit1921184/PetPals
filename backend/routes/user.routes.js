@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 const { UserModel } = require("../model/user.model")
 const {BlackListModel} = require("../model/blacklist.model")
 const { auth } = require("../middlewares/auth.middleware")
+const {access} = require("../middlewares/access.middleware")
 
 const userRouter = express.Router()
 
@@ -41,18 +42,18 @@ userRouter.post("/login", async(req,res) => {
 					// const token = jwt.sign({course:'nem104'},'masai');
 					res.status(200).json({msg:"Login Successful!",token:jwt.sign({userId:user._id,name:user.name},process.env.Key)})
 				} else {
-					res.status(200).json({msg: "Password does not match"})
+					res.status(400).json({msg: "Password does not match"})
 				}
 			})
 		} else {
-			res.status(200).json({msg: "Wrong Credentials"})
+			res.status(400).json({msg: "Wrong Credentials"})
 		}
 	} catch(err) {
 		res.status(400).json({err})
 	}
 })
 
-userRouter.post("/logout",async(req,res)=>{
+userRouter.post("/logout",auth,async(req,res)=>{
 	const token = req.headers.authorization;
 	try{
 		const blacklist = new BlackListModel({
@@ -66,7 +67,7 @@ userRouter.post("/logout",async(req,res)=>{
 	}
 })
 
-userRouter.get("/",async(req,res)=>{
+userRouter.get("/",auth,access("admin"),async(req,res)=>{
 	try{
 		const user = await UserModel.find();
 		res.status(200).json({user});
@@ -76,7 +77,7 @@ userRouter.get("/",async(req,res)=>{
 	}
 })
 
-userRouter.get("/:id",async(req,res)=>{
+userRouter.get("/:id",auth,access("admin"),async(req,res)=>{
 	const { id } = req.params
 	try{
 		console.log(id);
@@ -88,7 +89,7 @@ userRouter.get("/:id",async(req,res)=>{
 	}
 })
 
-userRouter.delete("/:id",async(req,res)=>{
+userRouter.delete("/:id",auth,access("admin"),async(req,res)=>{
 	const { id } = req.params
 	try{
 		const user = await UserModel.findByIdAndDelete({_id:id});
@@ -99,7 +100,7 @@ userRouter.delete("/:id",async(req,res)=>{
 	}
 })
 
-userRouter.patch("/:id",async(req,res)=>{
+userRouter.patch("/:id",auth,access("admin"),async(req,res)=>{
 	const { id } = req.params
 	const payload = req.body
 	try{

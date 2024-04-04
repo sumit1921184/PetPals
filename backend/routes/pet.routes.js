@@ -1,6 +1,7 @@
 const express = require("express");
 const { PetModel } = require("../model/pet.model");
-
+const { auth } = require("../middlewares/auth.middleware")
+const {access} = require("../middlewares/access.middleware")
 const petRouter = express.Router();
 
 
@@ -43,7 +44,7 @@ petRouter.get("/", async (req, res) => {
 
 
 
-petRouter.post("/", async (req, res) => {
+petRouter.post("/",auth,access("admin"),async (req, res) => {
     const payload = req.body;
     try {
         const pet = new PetModel(payload);
@@ -54,7 +55,7 @@ petRouter.post("/", async (req, res) => {
     }
 });
 
-petRouter.patch("/:id", async (req, res) => {
+petRouter.patch("/:id",auth,access("admin"),async (req, res) => {
     const { id } = req.params;
     const payload = req.body;
     try {
@@ -65,7 +66,7 @@ petRouter.patch("/:id", async (req, res) => {
     }
 });
 
-petRouter.delete("/:id", async (req, res) => {
+petRouter.delete("/:id",auth,access("admin"), async (req, res) => {
     const { id } = req.params;
     try {
         await PetModel.findByIdAndDelete(id);
