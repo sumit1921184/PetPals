@@ -1,6 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 
+
+
 import PrivateRouting from "./PrivateRouting";
+
 
 
 
@@ -11,6 +14,7 @@ import About from "../Pages/About";
 import SignUp from "../Components/SignUp";
 import Adopt from "../Pages/Adopt";
 import MyApplication from "../Pages/MyApplication";
+
 
 function Allroutes() {
   return (
