@@ -41,6 +41,19 @@ export const Navbar = () => {
             className={`nav-link ${activeSection === "/adopt" ? "active" : ""}`}
           >
             Adopt
+
+          </Link>
+          <Link
+            to="/about"
+            className={`nav-link ${activeSection === "/adopt" ? "active" : ""}`}
+          >
+            About
+          </Link>
+          <Link
+            to="/contact"
+            className={`nav-link ${activeSection === "/adopt" ? "active" : ""}`}
+          >
+            Contact
           </Link>
           <Link to="/login" className="nav-link">
             Login
