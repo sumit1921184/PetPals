@@ -40,4 +40,8 @@
   .read-more-btn:hover {
     background-color: yellow;
   }
-  
+  @media (max-width: 767px) {
+    .card {
+      flex-basis: 100%; /* Each card takes up 100% of the container width */
+    }
+  }

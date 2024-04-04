@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GET_PETS_FAILURE, GET_PETS_REQUEST, GET_PETS_SUCCESS, GET_SINGLE_PET_FAILURE, GET_SINGLE_PET_REQUEST, GET_SINGLE_PET_SUCCESS } from "./action-types";
+import { url } from '../../api';
 
 // import axios from 'axios';
 
@@ -8,7 +9,7 @@ export const fetchPets = (filters) => {
         console.log("fetching pets....");
         dispatch({ type: GET_PETS_REQUEST });
         try {
-            let url = 'https://excited-cod-beret.cyclic.app/pets/get?';
+            let url = `${url}/get?`;
             for (const key in filters) {
                 if (filters[key]) {
                     if (Array.isArray(filters[key])) {
@@ -38,7 +39,7 @@ export const GetSingleData = (petid)=>{
         console.log(`getting single pet with id ${petid}`);
         dispatch({type:GET_SINGLE_PET_REQUEST});
         try {
-            let data = (await axios.get(`https://excited-cod-beret.cyclic.app/pets/get/${petid}`)).data;
+            let data = (await axios.get(`${url}/get/${petid}`)).data;
             dispatch({type:GET_SINGLE_PET_SUCCESS,payload:data.data});
         } catch (error) {
             console.log(error);
