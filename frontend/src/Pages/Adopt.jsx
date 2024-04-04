@@ -282,7 +282,7 @@ const Adopt = () => {
                 Adopt Me
               </Button>
               <Modal isOpen={isOpen} onClose={onClose}>
-                {/* <ModalOverlay /> */}
+                {/* model */}
                 <ModalContent>
                   <ModalHeader>Application Form</ModalHeader>
                   <ModalCloseButton />
