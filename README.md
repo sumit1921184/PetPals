@@ -79,7 +79,10 @@ my-app/
 ## Video Walkthrough
 
 
-https://youtu.be/LVnCBrtfXA0
+
+https://github.com/heyyrahul/vivid-roll-405/assets/79692865/75322f54-30ab-4262-ab2b-dd15eeacd9fb
+
+
 
 
 
@@ -177,29 +180,36 @@ Applications
 ## ScreenShots  
 
 ## Home Page
-![home](https://github.com/heyyrahul/python-magician-6789/assets/79692865/28405382-84b2-4bc6-a100-112fd12fa802)
+![home](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/ec272e88-8d0e-4a28-b335-a5cac7915d52)
 
 ## Login
-![login](https://github.com/heyyrahul/python-magician-6789/assets/79692865/46c6cc49-c0e3-4e26-80b2-22356dc62b1c)
+![login](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/a8d4f475-ea27-46b5-82be-d82a4b4b95df)
 
-## Cart
-![cart](https://github.com/heyyrahul/python-magician-6789/assets/79692865/6cb206ac-9e23-44f6-b130-382303f1bf23)
-## Payment
-![payment and address](https://github.com/heyyrahul/python-magician-6789/assets/79692865/36f22e4c-00fe-42ad-952e-352a81cb0d93)
-## Order History
-![orderhistory](https://github.com/heyyrahul/python-magician-6789/assets/79692865/317cf7a7-cb6b-4a4e-ae4b-c85877fa166d)
+## Signup
+![signup](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/61afe689-8613-42a2-98dd-4f19b69c6c72)
+## Adopt
+![adopt](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/5f45f8e4-8218-4e21-94ff-0709619cdf98)
+## Application Page
+![application](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/aaa48f25-4013-40e2-bf1c-f49f993123d0)
+## Admin Login
+![adminlogin](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/e382c6d0-2660-441b-a6f8-d15ac1f13d1f)
+
 ## Admin Dashboard
-![adminDasbhboard](https://github.com/heyyrahul/python-magician-6789/assets/79692865/08fdc07a-353d-4dc6-9549-924106d5237d)
+![admin Dashboard](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/2474fe9d-6725-4939-9bfd-d3856fa6d29d)
+## Admin Pet Page
+![admin pet page](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/87d27a60-7654-41cf-8b25-5a6c5cb8c957)
 
-## Product Page
-![Product Page](https://github.com/heyyrahul/python-magician-6789/assets/79692865/a1d6ec4f-7dd1-46ab-a703-e4a071d32faa)
-## Users/Traffic page
-![Users _ Traffic](https://github.com/heyyrahul/python-magician-6789/assets/79692865/08b8085b-c583-40e9-a3ff-fe769393fc94)
+## Admin Pet&User Add Page
+![admin pet and user add page](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/0668e461-7d7b-4772-b54c-f94655ce6ec6)
+
+
+## Admin Users Page
+![admin userlist](https://github.com/heyyrahul/vivid-roll-405/assets/79692865/f04d4b35-6fe7-494a-bc70-4eddbc107f8f)
 
 ## Contributors
-## [Sumit Kumar Jha](https://www.linkedin.com/in/hellomohdasif/)
-## [Rahul Kumar](https://epicbazaar.vercel.app/)
-## [Anshu Kumari](https://www.linkedin.com/in/rantu-bangal/)
-## [Sachin Mohite](https://www.linkedin.com/in/sujeet-kumar-2b4750195/)
+## [Sumit Kumar Jha](https://www.linkedin.com/in/sumit-kumar-jha-050156217/)
+## [Rahul Kumar](https://www.linkedin.com/in/heyyrahul/)
+## [Anshu Kumari](https://www.linkedin.com/in/anshu-kumari-5a4806193/)
+## [Sachin Mohite](https://www.linkedin.com/in/sachin-mohite-0893a7203/)
 
 
