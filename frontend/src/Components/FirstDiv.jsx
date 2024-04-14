@@ -19,11 +19,22 @@ const FirstDiv = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        position:'relative',
       }}
     >
+      <Box  style={{
+        // border:"2px solid",
+        width:"260px",
+        position:"absolute",
+        left:'5%',
+        top:'20%',
+
+      }}>
+        <h1 style={{fontSize:"2rem",fontWeight:"bold",color:"yellow"}}>" You cant buy love, but you can rescue it "</h1>
+
+      </Box>
       
-      
-      <Box alignSelf="flex-start" marginLeft="150px" marginTop="400px">
+      <Box alignSelf="flex-start" marginLeft="150px" marginTop="250px">
         
       <Button onClick={() => navigate("/adopt")} background={'orange'} color={'black'} >Get Started</Button>
         
