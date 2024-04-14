@@ -8,7 +8,6 @@ import SignUp from "../Components/SignUp";
 import Adopt from "../Pages/Adopt";
 import MyApplication from "../Pages/MyApplication";
 
-
 function Allroutes() {
   return (
     <Routes>
