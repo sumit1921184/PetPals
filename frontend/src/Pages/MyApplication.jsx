@@ -66,9 +66,11 @@
 
 import { useEffect, useState } from "react";
 import "../CSS/Application.css";
+import { Center, Spinner } from "@chakra-ui/react";
 
 function MyApplication() {
     const [dataa, setData] = useState([]);
+    const [loading,setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
@@ -83,6 +85,7 @@ function MyApplication() {
                 });
                 let { application } = await res.json();
                 console.log(application, "dataaa");
+                setLoading(false);
                 setData(application);
             } catch (e) {
                 console.log(e);
@@ -92,11 +95,26 @@ function MyApplication() {
     }, []);
 
     return (
+        <>
+        { loading && 
+  
+            <Center p={"150px"}>
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="black.500"
+                size="xl"
+              />
+            </Center>
+        
+        }
         <div className="main-app-cont">
             <main>
                 {!dataa ? <h1 className="not-app">You do not have any applications</h1> : <h1 className="h1-app">Applications</h1>}
                 {Array.isArray(dataa) && dataa.map((elem, ind) => {
                     return (
+                        
                         <div key={ind} className="app-cont">
                             <div className="right">
                                 <img src={elem.url} alt="" className="img-right"/>
@@ -117,6 +135,7 @@ function MyApplication() {
                 })}
             </main>
         </div>
+        </>
     );
 }
 

@@ -8,9 +8,17 @@
 main{
     flex: 1;
 }
+.right{
+    height:300px;
+    width:400px;
+    overflow: hidden;
+
+}
 .img-right{
-    height:200px;
-    width:300px;
+ width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 }
 .applied{
     color:rgb(44, 236, 44);
@@ -69,4 +77,20 @@ main{
     border-radius: 50%;
     margin-left:5px;
     background-color: rgb(44, 236, 44);
+}
+
+@media all and (max-width:720px){
+    .app-cont{
+        /* border: 2px solid; */
+        flex-direction: column;
+
+    }
+    .img-right{
+        margin: auto;
+    }
+    .right{
+        width:80%;
+        margin: auto;
+        
+    }
 }
