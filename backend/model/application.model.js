@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 
 const applicationSchema = mongoose.Schema({
+    
 	name:{type:String,required:true},
     contact:{type:Number,required:true},
     AadharId:{type:String,required:true},
