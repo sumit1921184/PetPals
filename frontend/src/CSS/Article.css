@@ -14,11 +14,12 @@
     align-items: center;
     justify-content: space-between;
     border: 1px solid #ddd;
-  border-radius: 8px;
+  
+    border-radius: 8px;
  
     padding: 20px;
     border-radius: 10px;
-    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    
     width: 100%;
     max-width: 1500px;
     margin-top: 30px;
