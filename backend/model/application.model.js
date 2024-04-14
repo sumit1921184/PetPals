@@ -14,7 +14,7 @@ const applicationSchema = mongoose.Schema({
     petGender:{type:String,required:true},
     url:{type:String,required:true},
     description:{type:String,required:true},
-    isAdopted:{type:boolean,required:true},
+    isAdopted:{type:String,required:true},
     status:{type:String,
     enum:["Applied","Reviewed","Accept","Reject"],
 default:"Applied"
