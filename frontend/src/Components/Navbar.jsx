@@ -225,7 +225,7 @@ export const Navbar = () => {
         <div className="menu-sumit">
         {isLargerThanWidth && isLoggedIn && (
           <Menu>
-            <MenuButton as={Button} colorScheme='#1D2B53' color='black' borderColor='black'>
+            <MenuButton as={Button} colorScheme='E96220' color='white' borderColor='white'>
               Profile
             </MenuButton>
             <MenuList>
@@ -260,6 +260,7 @@ export const Navbar = () => {
                 <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
                   Signup
                 </Link>
+                
               </>
             )}
             {isLoggedIn && (

@@ -22,7 +22,8 @@ import {
   ModalBody,
   ModalFooter,
 } from "@chakra-ui/react";
-import { toast } from "react-toastify";
+import { useToast } from '@chakra-ui/react';
+import { useNavigate } from "react-router-dom";
 
 const Adopt = () => {
   const [data, setData] = useState([]);
@@ -34,6 +35,8 @@ const Adopt = () => {
   const [filterColor, setFilterColor] = useState("");
   const [selectedPet, setSelectedPet] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast()
+  const navigate = useNavigate()
   const petsPerPage = 8;
 
   // Form Data
@@ -117,7 +120,7 @@ const Adopt = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`, 
+            "Authorization": `Bearer ${token}`,
           },
           body: JSON.stringify({
             name,
@@ -128,10 +131,10 @@ const Adopt = () => {
           }),
         }
       );
-        console.log(name, contact, AadharId, address, reason);
-   
+      console.log(name, contact, AadharId, address, reason);
+
       const responseData = await response.json();
-      if(responseData.ok){
+      if (response.ok) {
         toast({
           title: responseData.msg,
           status: 'success',
@@ -139,21 +142,15 @@ const Adopt = () => {
           isClosable: true,
         });
       }
-      else{
+      else {
         toast({
-          title: responseData.msg,
+          title: "Error while sending the data",
           status: 'error',
           duration: 2000,
           isClosable: true,
         });
       }
       console.log(responseData);
-      toast({
-        title: responseData.msg,
-        status: 'error',
-        duration: 2000,
-        isClosable: true,
-      });
       onClose();
     } catch (error) {
       toast.error('Please login');
@@ -161,19 +158,33 @@ const Adopt = () => {
       toast.error("Failed to submit application. Please try again later.");
     }
   };
-  
+
 
   return (
     <>
+    { loading && 
+  
+      <Center p={"150px"}>
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="black.500"
+          size="xl"
+        />
+      </Center>
+  
+  }
+
+  
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          marginLeft: "5rem",
-          gap: "10px",
-          marginTop: "10px",
-          justifyContent:"center",
-          marginTop:"50px",
+          flexDirection: "column",
+          gap: "30px",
+          justifyContent: "center",
+          marginTop: "50px",
         }}
       >
         <input
@@ -187,45 +198,52 @@ const Adopt = () => {
             padding: "5px",
             marginRight: "10px",
             borderColor: "grey",
+            width:"300px",
           }}
         />
 
-        <select
-          style={{
-            backgroundColor: "#f5f5f5",
-            borderRadius: "5px",
-            padding: "5px",
-            marginRight: "10px",
-            borderColor: "grey",
-          }}
-          value={filterType}
-          onChange={handleFilterTypeChange}
-        >
-          <option value="">All Types</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-        </select>
+        <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}>
+          <select
+            style={{
+              backgroundColor: "#f5f5f5",
+              borderRadius: "5px",
+              padding: "5px",
+              marginRight: "10px",
+              borderColor: "grey",
+            }}
+            value={filterType}
+            onChange={handleFilterTypeChange}
+          >
+            <option value="">All Types</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+          </select>
 
-        <select
-          style={{
-            backgroundColor: "#f5f5f5",
-            borderRadius: "5px",
-            padding: "5px",
-            marginRight: "10px",
-            borderColor: "grey",
-          }}
-          value={filterColor}
-          onChange={handleFilterColorChange}
-        >
-          <option value="">All Colors</option>
-          <option value="brown">Brown</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="gray">Gray</option>
-          <option value="cream">Cream</option>
-          <option value="red">Red</option>
-        </select>
+          <select
+            style={{
+              backgroundColor: "#f5f5f5",
+              borderRadius: "5px",
+              padding: "5px",
+              marginRight: "10px",
+              borderColor: "grey",
+            }}
+            value={filterColor}
+            onChange={handleFilterColorChange}
+          >
+            <option value="">All Colors</option>
+            <option value="brown">Brown</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="gray">Gray</option>
+            <option value="cream">Cream</option>
+            <option value="red">Red</option>
+          </select>
+        </div>
       </div>
+      
       <div style={{ paddingTop: "70px", paddingBottom: "70px" }}>
         <Grid
           textAlign={"left"}
@@ -254,15 +272,26 @@ const Adopt = () => {
               style={{ borderRadius: "10px" }}
               gap="10px"
             >
-              <Image
-                src={pet.url}
-                m={"auto"}
+              <div
+
                 style={{
-                  borderRadius: "10px",
-                  width: "100%",
-                  height: "230px",
+                  width:"100%",
+                  height:"300px",
+                  overflow:"hidden",
+                  // height: "230px",
                 }}
-              />
+              >
+                <Image
+                  src={pet.url}
+                  m={"auto"}
+                  style={{
+                    borderRadius: "10px",
+                    width: "100%",
+                    objectFit: "cover",
+                    height: "100%",
+                  }}
+                />
+              </div>
               <Flex flexDirection={"column"} gap="10px">
                 <Heading
                   as="h6"
@@ -293,6 +322,10 @@ const Adopt = () => {
                 </Text>
               </Flex>
               <Button m="auto" bgColor="orange" onClick={() => {
+                let token = localStorage.getItem("token");
+                if (!token) {
+                  navigate("/login");
+                }
                 setSelectedPet(pet);
                 onOpen();
               }}>
