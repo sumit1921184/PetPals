@@ -1,47 +1,58 @@
 .review-container {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    gap: 20px;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.review-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.review-description {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.read-more-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: orange;
+  color: black;
+  cursor: pointer;
+}
+
+.read-more-btn:hover {
+  background-color: yellow;
+}
+
+/* Medium screens (>=768px and <1150px) */
+@media (min-width: 768px) and (max-width: 1149px) {
   .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family:  sans-serif;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    width: 300px; /* Adjust based on your preference */
+    width: calc(50% - 40px); /* Adjust width for 2 cards per row considering the gap */
   }
-  
-  .review-image {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
+}
+
+/* Large screens (>=1150px) */
+@media (min-width: 1150px) {
+  .card {
+    width: calc(33.333% - 40px); /* Adjust width for 3 cards per row considering the gap */
   }
-  
-  .review-description {
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .read-more-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: orange;
-    color: black;
-    cursor: pointer;
-  }
-  
-  .read-more-btn:hover {
-    background-color: yellow;
-  }
-  @media (max-width: 767px) {
-    .card {
-      flex-basis: 100%; /* Each card takes up 100% of the container width */
-    }
-  }
+}

@@ -29,7 +29,7 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (formData.password !== formData.confirmPassword) {
+        if (formData.pass !== formData.confirmPassword) {
             return toast({
                 title: "Password and confirm password should be the same",
                 status: 'error',
@@ -92,8 +92,8 @@ export default function Register() {
                             />
                             <input
                                 type="password"
-                                name="password"
-                                value={formData.password}
+                                name="pass"
+                                value={formData.pass}
                                 onChange={handleChange}
                                 placeholder='Password'
                                 required

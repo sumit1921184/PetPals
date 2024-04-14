@@ -8,7 +8,7 @@ const Review = () => {
     {
       id: 1,
       image: card1,
-      description: 'My experience at the pet store was nothing short of exceptional. From the moment I walked in, I was greeted with warmth and enthusiasm. The staff members were incredibly knowledgeable about pets, and they went above and beyond to assist me in finding the perfect products for my furry friend. The store itself was immaculately clean, and the wide selection of pet supplies was impressive .....',
+      description: 'My experience at the pet store was nothing short of exceptional. From the moment I walked in, I was greeted with warmth and enthusiasm. The staff members were incredibly knowledgeable about pets, and they went above and beyond to assist me in finding the perfect products for my furry friend. The store itself was immaculately clean, and the wide selection of pet supplies was impressive.',
     },
     {
       id: 2,
