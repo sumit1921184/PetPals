@@ -30,7 +30,7 @@ const FirstDiv = () => {
         top:'20%',
 
       }}>
-        {/* <h1 style={{fontSize:"2rem",fontWeight:"bold",color:"yellow"}}>" You cant buy love, but you can rescue it "</h1> */}
+        <h1 style={{fontSize:"2rem",fontWeight:"bold",color:"yellow"}}>" You cant buy love, but you can rescue it "</h1>
 
       </Box>
       

@@ -8,7 +8,7 @@ const HomePage = () => {
     <div>
       
       <FirstDiv/>
-      <h2 style={{ textAlign: 'center',fontSize: '50px', margin: '20px 0',fontWeight: 'bold',fontFamily: "sans-serif", color:'orange'}}>You cant buy love, but you can rescue it</h2>
+      {/* <h2 style={{ textAlign: 'center',fontSize: '50px', margin: '20px 0',fontWeight: 'bold',fontFamily: "sans-serif", color:'orange'}}>You cant buy love, but you can rescue it</h2> */}
       <Article/>
       <h2 style={{ textAlign: 'center',fontSize: '30px', margin: '20px 0',fontWeight: 'bold',fontFamily: "sans-serif", color:'orange'}}>Review</h2>
 
