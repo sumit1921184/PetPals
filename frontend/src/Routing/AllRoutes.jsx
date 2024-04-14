@@ -1,12 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-
-
-
 import PrivateRouting from "./PrivateRouting";
-
-
-
-
 import Homepage from "../Pages/HomePage";
 import Contact from "../Pages/Contact";
 import { LoginForm } from "../Pages/Login";
