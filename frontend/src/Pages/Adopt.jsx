@@ -162,19 +162,7 @@ const Adopt = () => {
 
   return (
     <>
-    { loading && 
-  
-      <Center p={"150px"}>
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="black.500"
-          size="xl"
-        />
-      </Center>
-  
-  }
+    
 
   
       <div
@@ -243,7 +231,19 @@ const Adopt = () => {
           </select>
         </div>
       </div>
-      
+      { loading && 
+  
+  <Center p={"150px"}>
+    <Spinner
+      thickness="4px"
+      speed="0.65s"
+      emptyColor="gray.200"
+      color="black.500"
+      size="xl"
+    />
+  </Center>
+
+}
       <div style={{ paddingTop: "70px", paddingBottom: "70px" }}>
         <Grid
           textAlign={"left"}
@@ -258,6 +258,7 @@ const Adopt = () => {
             lg: "repeat(3,1fr)",
           }}
         >
+          
           {currentPets.map((pet) => (
             <Box
               key={pet._id}

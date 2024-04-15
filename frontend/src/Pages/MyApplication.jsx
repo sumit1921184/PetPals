@@ -28,14 +28,14 @@
 //         fetchData();
 //     }, []);
 
-    
+
 
 //     return (
 //         <div className="main-app-cont">
 //             <main>
 //                 {dataa.length === 0 ? <h1 className="not-app">You do not have any applications</h1> : <h1 className="h1-app">Applications</h1>}
 //                 {dataa.map((elem, ind) => {
-                    
+
 //                     return (
 //                         <div key={ind} className="app-cont">
 //                             <div className="right">
@@ -70,7 +70,7 @@ import { Center, Spinner } from "@chakra-ui/react";
 
 function MyApplication() {
     const [dataa, setData] = useState([]);
-    const [loading,setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
@@ -96,45 +96,46 @@ function MyApplication() {
 
     return (
         <>
-        { loading && 
-  
-            <Center p={"150px"}>
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="black.500"
-                size="xl"
-              />
-            </Center>
-        
-        }
-        <div className="main-app-cont">
-            <main>
-                {!dataa ? <h1 className="not-app">You do not have any applications</h1> : <h1 className="h1-app">Applications</h1>}
-                {Array.isArray(dataa) && dataa.map((elem, ind) => {
-                    return (
-                        
-                        <div key={ind} className="app-cont">
-                            <div className="right">
-                                <img src={elem.url} alt="" className="img-right"/>
-                            </div>
-                            <div className="left">
-                                <div className="app-name"><h1>{elem.petName}</h1></div>
-                                <div className="app-name-p">
-                                    <p>Age: {elem.petAge}</p>
-                                    <p>Color: {elem.color}</p>
-                                    <p>Gender: {elem.petGender}</p>
-                                    {elem.status === "Applied" && <p>Status: <span className="applied">Applied</span> <div className="app-stat"></div></p>}
-                                    {elem.status === "Reject" && <p>Status: <span className="rejected">Rejected</span> ❌</p>}
-                                    {elem.status === "Accept" && <p>Status: <span className="applied">Accepted</span> ✅</p>}
+
+            <div className="main-app-cont">
+                <main>
+                    {!dataa ? <h1 className="not-app">You do not have any applications</h1> : <h1 className="h1-app">Applications</h1>}
+                    {loading &&
+
+                        <Center p={"150px"}>
+                            <Spinner
+                                thickness="4px"
+                                speed="0.65s"
+                                emptyColor="gray.200"
+                                color="black.500"
+                                size="xl"
+                            />
+                        </Center>
+
+                    }
+                    {Array.isArray(dataa) && dataa.map((elem, ind) => {
+                        return (
+
+                            <div key={ind} className="app-cont">
+                                <div className="right">
+                                    <img src={elem.url} alt="" className="img-right" />
+                                </div>
+                                <div className="left">
+                                    <div className="app-name"><h1>{elem.petName}</h1></div>
+                                    <div className="app-name-p">
+                                        <p>Age: {elem.petAge}</p>
+                                        <p>Color: {elem.color}</p>
+                                        <p>Gender: {elem.petGender}</p>
+                                        {elem.status === "Applied" && <p>Status: <span className="applied">Applied</span> <div className="app-stat"></div></p>}
+                                        {elem.status === "Reject" && <p>Status: <span className="rejected">Rejected</span> ❌</p>}
+                                        {elem.status === "Accept" && <p>Status: <span className="applied">Accepted</span> ✅</p>}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
-            </main>
-        </div>
+                        );
+                    })}
+                </main>
+            </div>
         </>
     );
 }
