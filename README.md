@@ -130,6 +130,7 @@ Quickly set up and start the project with these steps:
    cd frontend
    npm install
 ## Credentials
+## For Users
 
 Provide user credentials for authenticated pages:
 
@@ -137,6 +138,10 @@ Provide user credentials for authenticated pages:
 - **User Login:** virat@gmail.com
 - **Password:** virat
 
+## For Admin
+- **URL:** [https://pet-pals-admin.vercel.app/](https://pet-pals-admin.vercel.app/)
+- **Admin Login:** admin@gmail.com
+- **Password:** 000
 ## APIs Used
 
 If your application relies on external APIs, document them and include any necessary links or references.
