@@ -140,8 +140,8 @@ Provide user credentials for authenticated pages:
 
 ## For Admin
 - **URL:** [https://pet-pals-admin.vercel.app/](https://pet-pals-admin.vercel.app/)
-- **Admin Login:** admin@gmail.com
-- **Password:** 000
+- **Admin Login:** 
+- **Password:**
 ## APIs Used
 
 If your application relies on external APIs, document them and include any necessary links or references.
