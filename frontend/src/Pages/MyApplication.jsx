@@ -47,7 +47,7 @@ function MyApplication() {
                 {!dataa.length && !loading ? (
                     <h1 className="not-app">You do not have any applications</h1>
                 ) : (
-                    <h1 className="h1-app"> My Applications</h1>
+                    <h1 className="h1-app" style={{ textAlign: "center", textDecoration: "none" }}> My Applications</h1>
                 )}
 
                 {loading && (
