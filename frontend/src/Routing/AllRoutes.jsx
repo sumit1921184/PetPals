@@ -18,7 +18,6 @@ function Allroutes() {
       <Route path="/about" element={<About />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/SignUp" element={<SignUp />} />
-
       <Route path="/Application" element={<PrivateRouting>{<MyApplication />}</PrivateRouting>} />
 
     </Routes>

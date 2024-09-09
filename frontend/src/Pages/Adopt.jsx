@@ -21,9 +21,12 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Select,
+  IconButton,
 } from "@chakra-ui/react";
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 const Adopt = () => {
   const [data, setData] = useState([]);
@@ -39,7 +42,6 @@ const Adopt = () => {
   const navigate = useNavigate()
   const petsPerPage = 8;
 
-  // Form Data
   const [formData, setFormData] = useState({
     name: "",
     contact: "",
@@ -131,8 +133,6 @@ const Adopt = () => {
           }),
         }
       );
-      console.log(name, contact, AadharId, address, reason);
-
       const responseData = await response.json();
       if (response.ok) {
         toast({
@@ -150,192 +150,154 @@ const Adopt = () => {
           isClosable: true,
         });
       }
-      console.log(responseData);
       onClose();
     } catch (error) {
-      toast.error('Please login');
       console.error("Error submitting application:", error);
       toast.error("Failed to submit application. Please try again later.");
     }
   };
 
-
   return (
     <>
-    
-
-  
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          gap: "30px",
-          justifyContent: "center",
-          marginTop: "50px",
-        }}
+      <Flex
+        justify="center"
+        align="center"
+        gap="20px"
+        wrap="wrap"
+        mt="30px"
+        mb="20px"
       >
-        <input
+        <Input
           type="text"
           placeholder="Search by name"
           value={searchInput}
           onChange={handleSearchInputChange}
-          style={{
-            backgroundColor: "#f5f5f5",
-            borderRadius: "5px",
-            padding: "5px",
-            marginRight: "10px",
-            borderColor: "grey",
-            width:"300px",
-          }}
+          bg="#f5f5f5"
+          borderRadius="10px"
+          padding="10px"
+          w="300px"
+          border="1px solid #ccc"
         />
 
-        <div style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}>
-          <select
-            style={{
-              backgroundColor: "#f5f5f5",
-              borderRadius: "5px",
-              padding: "5px",
-              marginRight: "10px",
-              borderColor: "grey",
-            }}
-            value={filterType}
-            onChange={handleFilterTypeChange}
-          >
-            <option value="">All Types</option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-          </select>
-
-          <select
-            style={{
-              backgroundColor: "#f5f5f5",
-              borderRadius: "5px",
-              padding: "5px",
-              marginRight: "10px",
-              borderColor: "grey",
-            }}
-            value={filterColor}
-            onChange={handleFilterColorChange}
-          >
-            <option value="">All Colors</option>
-            <option value="brown">Brown</option>
-            <option value="black">Black</option>
-            <option value="white">White</option>
-            <option value="gray">Gray</option>
-            <option value="cream">Cream</option>
-            <option value="red">Red</option>
-          </select>
-        </div>
-      </div>
-      { loading && 
-  
-  <Center p={"150px"}>
-    <Spinner
-      thickness="4px"
-      speed="0.65s"
-      emptyColor="gray.200"
-      color="black.500"
-      size="xl"
-    />
-  </Center>
-
-}
-      <div style={{ paddingTop: "70px", paddingBottom: "70px" }}>
-        <Grid
-          textAlign={"left"}
-          color={"#171616"}
-          w="85%"
-          m="auto"
-          gap={{ base: "20px", md: "30px", lg: "40px", xl: "50px" }}
-          justifyContent={"center"}
-          templateColumns={{
-            base: "repeat(1,1fr)",
-            md: "repeat(2,1fr)",
-            lg: "repeat(3,1fr)",
-          }}
+        <Select
+          placeholder="All Types"
+          value={filterType}
+          onChange={handleFilterTypeChange}
+          bg="#f5f5f5"
+          borderRadius="10px"
+          padding="10px"
+          border="1px solid #ccc"
+          w="200px"
         >
-          
-          {currentPets.map((pet) => (
-            <Box
-              key={pet._id}
-              boxShadow="grey 0px 8px 24px"
-              display={"flex"}
-              flexDirection={"column"}
-              p={"20px"}
-              _hover={{
-                transform: "scale(1.02)",
-                transition: "transform 0.4s",
-              }}
-              style={{ borderRadius: "10px" }}
-              gap="10px"
-            >
-              <div
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+        </Select>
 
-                style={{
-                  width:"100%",
-                  height:"300px",
-                  overflow:"hidden",
-                  // height: "230px",
-                }}
-              >
-                <Image
-                  src={pet.url}
-                  m={"auto"}
-                  style={{
-                    borderRadius: "10px",
-                    width: "100%",
-                    objectFit: "cover",
-                    height: "100%",
-                  }}
-                />
-              </div>
-              <Flex flexDirection={"column"} gap="10px">
-                <Heading
-                  as="h6"
-                  fontSize="20px"
-                  textAlign="center"
-                  mt="7px"
-                  mb="5px"
-                >
-                  Name: {pet.name}
-                </Heading>
-                <Text>
-                  <strong>Type:</strong> {pet.type}
-                </Text>
-                <Text>
-                  {" "}
-                  <strong>Gender:</strong> {pet.gender}
-                </Text>
-                <Text>
-                  <strong>Color: </strong>
-                  {pet.color}
-                </Text>
-                <Text>
-                  <strong>Age: </strong>
-                  {pet.age}
-                </Text>
-                <Text>
-                  <strong>Description:</strong> {pet.description}
-                </Text>
-              </Flex>
-              <Button m="auto" bgColor="orange" onClick={() => {
+        <Select
+          placeholder="All Colors"
+          value={filterColor}
+          onChange={handleFilterColorChange}
+          bg="#f5f5f5"
+          borderRadius="10px"
+          padding="10px"
+          border="1px solid #ccc"
+          w="200px"
+        >
+          <option value="brown">Brown</option>
+          <option value="black">Black</option>
+          <option value="white">White</option>
+          <option value="gray">Gray</option>
+          <option value="cream">Cream</option>
+          <option value="red">Red</option>
+        </Select>
+      </Flex>
+
+      {loading && (
+        <Center p="150px">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            color="orange.500"
+            size="xl"
+          />
+        </Center>
+      )}
+
+
+      <Grid
+        textAlign="left"
+        color="#171616"
+        w="85%"
+        m="auto"
+        gap="40px"
+        justifyContent="center"
+        templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+        pb="70px"
+      >
+        {currentPets.map((pet) => (
+          <Box
+            key={pet._id}
+            boxShadow="lg"
+            transition="transform 0.3s"
+            _hover={{ transform: "scale(1.05)" }}
+            p="20px"
+            borderRadius="10px"
+            bg="white"
+          >
+            <Box overflow="hidden" borderRadius="10px">
+              <Image
+                src={pet.url}
+                width="100%"
+                height="300px"
+                objectFit="cover"
+                borderRadius="10px"
+              />
+            </Box>
+            <Heading as="h3" fontSize="24px" mt="10px" textAlign="center">
+              {pet.name}
+            </Heading>
+            <Text><strong>Type:</strong> {pet.type}</Text>
+            <Text><strong>Gender:</strong> {pet.gender}</Text>
+            <Text><strong>Color:</strong> {pet.color}</Text>
+            <Text><strong>Age:</strong> {pet.age}</Text>
+            <Text><strong>Description:</strong> {pet.description}</Text>
+
+            <Button
+              mt="10px"
+              colorScheme="orange"
+              w="100%"
+              onClick={() => {
                 let token = localStorage.getItem("token");
                 if (!token) {
                   navigate("/login");
                 }
                 setSelectedPet(pet);
                 onOpen();
-              }}>
-                Adopt Me
-              </Button>
-            </Box>
-          ))}
-        </Grid>
-      </div>
+              }}
+            >
+              Adopt Me
+            </Button>
+          </Box>
+        ))}
+      </Grid>
+
+      <Flex justify="center" mb="40px">
+        <ButtonGroup variant="solid" spacing="5">
+          <IconButton
+            icon={<ChevronLeftIcon />}
+            onClick={() => handlePagination(page - 1)}
+            isDisabled={page === 1}
+            aria-label="Previous"
+          />
+          <Text fontSize="xl">{page}</Text>
+          <IconButton
+            icon={<ChevronRightIcon />}
+            onClick={() => handlePagination(page + 1)}
+            isDisabled={currentPets.length < petsPerPage}
+            aria-label="Next"
+          />
+        </ButtonGroup>
+      </Flex>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -343,90 +305,59 @@ const Adopt = () => {
           <ModalHeader>Application Form</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <form>
-              <FormControl>
-                <FormLabel>Name</FormLabel>
-                <Input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Contact</FormLabel>
-                <Input
-                  type="text"
-                  placeholder="Contact"
-                  name="contact"
-                  value={formData.contact}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Aadhar ID</FormLabel>
-                <Input
-                  type="text"
-                  placeholder="Aadhar ID"
-                  name="AadharId"
-                  value={formData.AadharId}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Address</FormLabel>
-                <Input
-                  type="text"
-                  placeholder="Address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Reason</FormLabel>
-                <Input
-                  type="text"
-                  placeholder="Reason"
-                  name="reason"
-                  value={formData.reason}
-                  onChange={handleInputChange}
-                />
-              </FormControl>
-            </form>
+            <FormControl>
+              <FormLabel>Name</FormLabel>
+              <Input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </FormControl>
+            <FormControl mt="4">
+              <FormLabel>Contact Number</FormLabel>
+              <Input
+                type="tel"
+                name="contact"
+                value={formData.contact}
+                onChange={handleInputChange}
+              />
+            </FormControl>
+            <FormControl mt="4">
+              <FormLabel>Aadhar ID</FormLabel>
+              <Input
+                type="text"
+                name="AadharId"
+                value={formData.AadharId}
+                onChange={handleInputChange}
+              />
+            </FormControl>
+            <FormControl mt="4">
+              <FormLabel>Address</FormLabel>
+              <Input
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+              />
+            </FormControl>
+            <FormControl mt="4">
+              <FormLabel>Reason for Adopting</FormLabel>
+              <Input
+                type="text"
+                name="reason"
+                value={formData.reason}
+                onChange={handleInputChange}
+              />
+            </FormControl>
           </ModalBody>
           <ModalFooter>
-            <Button type="submit" onClick={handleFormSubmit}>
+            <Button colorScheme="orange" onClick={handleFormSubmit}>
               Submit
             </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-
-      <Flex m="auto" width="28%" mb="20px">
-        <ButtonGroup variant="outline" spacing="7">
-          <Button
-            bgColor="yellow"
-            onClick={() => handlePagination(page - 1)}
-            isDisabled={page === 1}
-          >
-            Previous
-          </Button>
-          <p>{page}</p>
-          <Button
-            bgColor="yellow"
-            onClick={() => handlePagination(page + 1)}
-            isDisabled={currentPets.length < petsPerPage}
-          >
-            Next
-          </Button>
-        </ButtonGroup>
-      </Flex>
     </>
   );
 };
