@@ -4,6 +4,7 @@ const { connection } = require("./config/db")
 const { userRouter } = require("./routes/user.routes")
 const { petRouter } = require("./routes/pet.routes")
 const { applicationRouter} = require("./routes/application.routes")
+const { createRouter } = require("./routes/create.routes")
 
 
 const app = express()
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use("/users", userRouter)
 app.use("/pet",petRouter)
 app.use("/application",applicationRouter)
+app.use("/createRouter",createRouter)
 
 //Used auth middleware for restricted routes
 
